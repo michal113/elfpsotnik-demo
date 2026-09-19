@@ -1362,9 +1362,13 @@ renderCart();
 /* ---------------- Shopify integration ---------------- */
 const SHOPIFY = {
   domain: 'xw28sh-m2.myshopify.com',
-  token: 'YOUR_SHOPIFY_STOREFRONT_PUBLIC_TOKEN', // wklej tu Storefront API "Public access token" ze sklepu Shopify
+  // Token NIE jest wpisany w kodzie (żeby nie trafiał do repo/historii gita).
+  // Wpisz go raz w konsoli przeglądarki na tej stronie:
+  //   localStorage.setItem('elf-shopify-token', 'TWÓJ_STOREFRONT_PUBLIC_TOKEN'); location.reload();
+  token: (function(){ try{ return localStorage.getItem('elf-shopify-token') || ''; }catch(e){ return ''; } })(),
   apiVersion: '2024-10'
 };
+const SHOPIFY_ENABLED = !!SHOPIFY.token;
 async function shopifyFetch(query, variables){
   try{
     const res = await fetch(`https://${SHOPIFY.domain}/api/${SHOPIFY.apiVersion}/graphql.json`, {
@@ -1384,6 +1388,7 @@ async function shopifyFetch(query, variables){
 // mapa: id produktu z demo (P) -> prawdziwy variantId w Shopify (uzupełniana z Storefront API)
 const SHOPIFY_VARIANTS = {};
 async function shopifyLoadVariants(){
+  if(!SHOPIFY_ENABLED) return;
   const handles = P.map(p=>p.id);
   const aliasQuery = handles.map((h,i)=>
     `p${i}: productByHandle(handle: "${h}") { variants(first:1){ edges{ node{ id availableForSale } } } }`
@@ -1416,6 +1421,7 @@ async function shopifyEnsureCart(){
 // próbuje zbudować prawdziwy koszyk Shopify z tego co jest w koszyku demo;
 // zwraca checkoutUrl jeśli chociaż jeden produkt istnieje realnie w Shopify, inaczej null
 async function shopifyBuildCheckoutUrl(){
+  if(!SHOPIFY_ENABLED) return null;
   const lines = cart
     .map(r => ({ merchandiseId: SHOPIFY_VARIANTS[r.id], quantity: r.qty }))
     .filter(l => l.merchandiseId);
