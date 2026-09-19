@@ -1359,6 +1359,78 @@ function renderCart(){
 }
 renderCart();
 
+/* ---------------- Shopify integration ---------------- */
+const SHOPIFY = {
+  domain: 'xw28sh-m2.myshopify.com',
+  token: 'YOUR_SHOPIFY_STOREFRONT_PUBLIC_TOKEN', // wklej tu Storefront API "Public access token" ze sklepu Shopify
+  apiVersion: '2024-10'
+};
+async function shopifyFetch(query, variables){
+  try{
+    const res = await fetch(`https://${SHOPIFY.domain}/api/${SHOPIFY.apiVersion}/graphql.json`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Shopify-Storefront-Access-Token': SHOPIFY.token
+      },
+      body: JSON.stringify({ query, variables })
+    });
+    const json = await res.json();
+    if(json.errors) console.error('Shopify error:', json.errors);
+    return json.data;
+  }catch(e){ console.error('Shopify fetch failed:', e); return null; }
+}
+
+// mapa: id produktu z demo (P) -> prawdziwy variantId w Shopify (uzupełniana z Storefront API)
+const SHOPIFY_VARIANTS = {};
+async function shopifyLoadVariants(){
+  const handles = P.map(p=>p.id);
+  const aliasQuery = handles.map((h,i)=>
+    `p${i}: productByHandle(handle: "${h}") { variants(first:1){ edges{ node{ id availableForSale } } } }`
+  ).join('\n');
+  const data = await shopifyFetch(`query { ${aliasQuery} }`);
+  if(!data) return;
+  handles.forEach((h,i)=>{
+    const prod = data['p'+i];
+    const edge = prod && prod.variants.edges[0];
+    if(edge && edge.node.availableForSale) SHOPIFY_VARIANTS[h] = edge.node.id;
+  });
+}
+shopifyLoadVariants();
+
+let shopifyCartId = null;
+try{ shopifyCartId = localStorage.getItem('elf-shopify-cart-id'); }catch(e){}
+
+async function shopifyEnsureCart(){
+  if(shopifyCartId){
+    const data = await shopifyFetch(`query($id:ID!){ cart(id:$id){ id checkoutUrl } }`, {id: shopifyCartId});
+    if(data && data.cart) return data.cart;
+    shopifyCartId = null;
+  }
+  const data = await shopifyFetch(`mutation{ cartCreate{ cart{ id checkoutUrl } userErrors{ message } } }`);
+  const c = data && data.cartCreate && data.cartCreate.cart;
+  if(c){ shopifyCartId = c.id; try{ localStorage.setItem('elf-shopify-cart-id', shopifyCartId); }catch(e){} }
+  return c;
+}
+
+// próbuje zbudować prawdziwy koszyk Shopify z tego co jest w koszyku demo;
+// zwraca checkoutUrl jeśli chociaż jeden produkt istnieje realnie w Shopify, inaczej null
+async function shopifyBuildCheckoutUrl(){
+  const lines = cart
+    .map(r => ({ merchandiseId: SHOPIFY_VARIANTS[r.id], quantity: r.qty }))
+    .filter(l => l.merchandiseId);
+  if(!lines.length) return null;
+  const c = await shopifyEnsureCart();
+  if(!c) return null;
+  const data = await shopifyFetch(
+    `mutation($cartId:ID!,$lines:[CartLineInput!]!){ cartLinesAdd(cartId:$cartId, lines:$lines){ cart{ checkoutUrl } userErrors{ message } } }`,
+    { cartId: c.id, lines }
+  );
+  const res = data && data.cartLinesAdd;
+  if(res && res.userErrors && res.userErrors.length) console.error('Shopify cart errors:', res.userErrors);
+  return res && res.cart ? res.cart.checkoutUrl : null;
+}
+
 function openDrawer(open){
   $('#drawer').dataset.open = String(open);
   $('#drawer').setAttribute('aria-hidden', String(!open));
@@ -1374,13 +1446,20 @@ function toast(msg){
   $('#toasts').appendChild(t);
   setTimeout(()=>t.remove(), 2600);
 }
-function checkoutModal(){
+async function checkoutModal(){
+  const btn = $('#checkout');
+  if(btn){ btn.disabled = true; btn.textContent = 'Łączenie z płatnością…'; }
+  let checkoutUrl = null;
+  try{ checkoutUrl = await shopifyBuildCheckoutUrl(); }catch(e){ console.error(e); }
+  if(checkoutUrl){ location.href = checkoutUrl; return; }
+  if(btn){ btn.disabled = false; btn.textContent = 'Przejdź do płatności'; }
+
   const m = document.createElement('div');
   m.className='modal';
   m.innerHTML = `<div class="modal__box" role="dialog" aria-modal="true" aria-label="Wersja demonstracyjna">
     <img class="modal__elf" src="${ELF.full}" alt="">
     <h3 style="font-size:1.35rem">Tu kończy się demo</h3>
-    <p style="color:var(--ink-soft);font-size:.95rem">W docelowym sklepie w tym miejscu otwiera się płatność. Wersja demonstracyjna nie przyjmuje zamówień — i bardzo dobrze, bo elfy jeszcze pakują się na Biegunie.</p>
+    <p style="color:var(--ink-soft);font-size:.95rem">Te produkty nie mają jeszcze odpowiednika w Shopify, więc nie da się ich naprawdę kupić. Dodaj produkt o takim samym handle w Shopify, żeby podłączyć go pod prawdziwy checkout.</p>
     <div class="pays"><span class="pay">BLIK</span><span class="pay">Karta</span><span class="pay">Przelewy24</span><span class="pay">Apple Pay</span></div>
     <button class="btn btn--primary btn--block" data-close-modal>Rozumiem</button>
   </div>`;
