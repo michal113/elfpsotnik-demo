@@ -231,8 +231,8 @@ section{padding-block:clamp(56px,7vw,96px)}
 .card:hover .card__art::after{opacity:1}
 .card__art{position:relative;aspect-ratio:1/.86;display:grid;place-items:center;overflow:hidden;
   background:var(--art-bg,#F2EBE0);cursor:pointer;width:100%;text-align:left}
-.card__art svg.art{width:58%;height:58%;transition:transform .3s cubic-bezier(.2,.7,.3,1)}
-.card:hover .card__art svg.art{transform:translateY(-5px) rotate(-3deg) scale(1.04)}
+.card__art .art{width:58%;height:58%;transition:transform .3s cubic-bezier(.2,.7,.3,1)}
+.card:hover .card__art .art{transform:translateY(-5px) rotate(-3deg) scale(1.04)}
 .card__art::before{content:"";position:absolute;inset:0;
   background-image:radial-gradient(rgba(255,255,255,.6) 1px,transparent 1px);
   background-size:22px 22px;opacity:.5}
@@ -253,10 +253,10 @@ section{padding-block:clamp(56px,7vw,96px)}
 .split{display:grid;grid-template-columns:.92fr 1.08fr;gap:clamp(24px,4vw,64px);align-items:center}
 .split__art{position:relative;border-radius:var(--r-lg);background:linear-gradient(160deg,var(--night-2),var(--night));
   aspect-ratio:1/1.02;display:grid;place-items:center;overflow:hidden}
-.split__art svg.art{width:56%;color:var(--berry);filter:drop-shadow(0 20px 30px rgba(0,0,0,.5))}
+.split__art .art{width:56%;color:var(--berry);filter:drop-shadow(0 20px 30px rgba(0,0,0,.5))}
 .split__art::after{content:"";position:absolute;width:74%;aspect-ratio:1;border-radius:50%;
   background:radial-gradient(circle,rgba(227,169,76,.26),transparent 68%)}
-.split__art svg.art{position:relative;z-index:2}
+.split__art .art{position:relative;z-index:2}
 .specs{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:0;border-top:1px solid var(--line)}
 .specs li{display:flex;gap:14px;padding:13px 0;border-bottom:1px solid var(--line);font-size:.95rem;align-items:baseline}
 .specs b{font-family:var(--f-display);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;
@@ -297,7 +297,7 @@ section{padding-block:clamp(56px,7vw,96px)}
   transition:transform .2s ease,box-shadow .2s ease}
 .post:hover{transform:translateY(-4px);box-shadow:var(--shadow-lift)}
 .post__art{aspect-ratio:16/9;display:grid;place-items:center;position:relative}
-.post__art svg.art{width:34%;height:64%}
+.post__art .art{width:34%;height:64%}
 .post__body{padding:16px 18px 20px;display:flex;flex-direction:column;gap:9px;flex:1}
 .post__meta{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;font-weight:700;color:var(--berry)}
 .post__meta span{color:var(--ink-soft);font-weight:500;letter-spacing:.04em;text-transform:none}
@@ -320,7 +320,7 @@ section{padding-block:clamp(56px,7vw,96px)}
 /* ---------- instagram ---------- */
 .ig{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
 .ig__tile{aspect-ratio:1;border-radius:var(--r-sm);display:grid;place-items:center;position:relative;overflow:hidden}
-.ig__tile svg.art{width:54%;height:54%}
+.ig__tile .art{width:54%;height:54%}
 .ig__tile::after{content:"";position:absolute;inset:0;background:rgba(18,48,36,0);transition:background .2s}
 .ig__tile:hover::after{background:rgba(18,48,36,.14)}
 @media (max-width:820px){.ig{grid-template-columns:repeat(3,1fr)}}
@@ -377,13 +377,13 @@ footer a:hover{color:var(--lamp)}
 .gallery{display:flex;flex-direction:column;gap:12px}
 .gallery__main{border-radius:var(--r-lg);aspect-ratio:1/1;display:grid;place-items:center;
   background:var(--art-bg,#F2EBE0);position:relative;overflow:hidden}
-.gallery__main svg.art{width:56%;height:56%}
+.gallery__main .art{width:56%;height:56%}
 .gallery__main::before{content:"";position:absolute;inset:0;
   background-image:radial-gradient(rgba(255,255,255,.6) 1px,transparent 1px);background-size:26px 26px;opacity:.5}
 .gallery__thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
 .thumb{aspect-ratio:1;border-radius:var(--r-sm);display:grid;place-items:center;border:2px solid transparent;
   background:#F2EBE0;transition:border-color .15s}
-.thumb svg.art{width:56%;height:56%}
+.thumb .art{width:56%;height:56%}
 .thumb[aria-pressed="true"]{border-color:var(--night)}
 .pdp__info{display:flex;flex-direction:column;gap:16px}
 .rating{display:flex;align-items:center;gap:9px;font-size:.85rem;color:var(--ink-soft)}
@@ -391,7 +391,7 @@ footer a:hover{color:var(--lamp)}
 .variants{display:flex;gap:10px;flex-wrap:wrap}
 .variant{display:flex;align-items:center;gap:10px;padding:10px 16px 10px 10px;border-radius:var(--r-sm);
   border:1.5px solid var(--line);background:var(--paper);font-weight:600;font-size:.92rem;transition:.16s}
-.variant svg.art{width:34px;height:34px}
+.variant .art{width:34px;height:34px}
 .variant[aria-pressed="true"]{border-color:var(--night);box-shadow:inset 0 0 0 1px var(--night)}
 .field{display:flex;flex-direction:column;gap:7px}
 .field label{font-size:.78rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-soft)}
@@ -420,7 +420,7 @@ footer a:hover{color:var(--lamp)}
   border:1px solid var(--line);border-radius:var(--r-lg);padding:22px}
 .bundle__arts{display:flex;align-items:center;gap:8px}
 .bundle__arts .b-art{width:64px;height:64px;border-radius:var(--r-sm);display:grid;place-items:center;background:#F2EBE0}
-.bundle__arts .b-art svg.art{width:60%;height:60%}
+.bundle__arts .b-art .art{width:60%;height:60%}
 .bundle__arts i{color:var(--ink-soft);font-style:normal;font-weight:700}
 .bundle__sum{margin-left:auto;text-align:right}
 .bundle__sum s{color:var(--ink-soft);font-size:.9rem}
@@ -438,7 +438,7 @@ footer a:hover{color:var(--lamp)}
 .drawer__body{flex:1;overflow-y:auto;padding:18px 20px;display:flex;flex-direction:column;gap:14px}
 .ci{display:flex;gap:13px;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:12px}
 .ci__art{width:64px;height:64px;border-radius:var(--r-sm);display:grid;place-items:center;flex:none;background:#F2EBE0}
-.ci__art svg.art{width:62%;height:62%}
+.ci__art .art{width:62%;height:62%}
 .ci__main{flex:1;display:flex;flex-direction:column;gap:5px;min-width:0}
 .ci__name{font-family:var(--f-display);font-weight:700;font-size:.95rem;line-height:1.25}
 .ci__opt{font-family:var(--f-hand);font-size:1.1rem;color:var(--berry)}
@@ -448,7 +448,7 @@ footer a:hover{color:var(--lamp)}
 .ci__del{font-size:.78rem;color:var(--ink-soft);text-decoration:underline;text-underline-offset:2px}
 .ci__del:hover{color:var(--berry)}
 .empty{text-align:center;color:var(--ink-soft);padding:40px 10px;display:flex;flex-direction:column;gap:14px;align-items:center}
-.empty svg.art{width:86px;color:#D9CDBB}
+.empty .art{width:86px;color:#D9CDBB}
 .drawer__foot{border-top:1px solid var(--line);background:var(--paper);padding:16px 20px 20px;display:flex;flex-direction:column;gap:12px}
 .ship-bar{height:7px;border-radius:999px;background:var(--line);overflow:hidden}
 .ship-bar i{display:block;height:100%;background:linear-gradient(90deg,var(--night-3),var(--lamp));
@@ -511,7 +511,7 @@ footer a:hover{color:var(--lamp)}
   border-radius:16px;border-bottom-left-radius:5px;overflow:hidden;animation:toastIn .24s ease}
 .pcard__top{display:flex;gap:12px;padding:12px}
 .pcard__art{width:62px;height:62px;border-radius:10px;background:#F2EBE0;display:grid;place-items:center;flex:none}
-.pcard__art svg.art{width:64%;height:64%}
+.pcard__art .art{width:64%;height:64%}
 .pcard h4{font-family:var(--f-display);font-size:.97rem;font-weight:700;margin-bottom:3px}
 .pcard p{font-size:.83rem;color:var(--ink-soft);line-height:1.45}
 .pcard__foot{display:flex;align-items:center;gap:10px;padding:0 12px 12px}
@@ -800,10 +800,9 @@ footer a:hover{color:var(--lamp)}
         <h2>Jedna figurka. Dwadzieścia cztery poranki, których dzieci nie zapomną.</h2>
         <p class="lead" style="margin-top:14px">Elf ma giętki drut w rękach i nogach, więc usiądzie na półce, powiesi się na choince albo złapie za klamkę. Ma to przetrwać cały grudzień w rękach dziecka — i kolejny rok w pudełku na strychu.</p>
         <ul class="specs">
-          <li><b>Wysokość</b> <span>ok. 30 cm, wygodna do ustawiania w każdej pozycji</span></li>
+          <li><b>Wysokość</b> <span>ok. 40 cm, wygodna do ustawiania w każdej pozycji</span></li>
           <li><b>Materiał</b> <span>miękka tkanina, wypełnienie antyalergiczne, twarz z żywicy</span></li>
-          <li><b>Konstrukcja</b> <span>giętkie ramiona i nogi, stabilna podstawa siedząca</span></li>
-          <li><b>Warianty</b> <span>elf Bruno lub elfka Mila — do wyboru przy zamówieniu</span></li>
+          <li><b>Konstrukcja</b> <span>giętkie druciki w ramionach i nogach, stabilna podstawa siedząca</span></li>
           <li><b>Wiek</b> <span>3+, zgodność z normą EN&nbsp;71</span></li>
         </ul>
         <p class="demo-note" style="margin-top:12px">Dane techniczne poglądowe — wersja demonstracyjna.</p>
@@ -989,7 +988,7 @@ footer a:hover{color:var(--lamp)}
         <li><a href="#" data-shop-cat="figurki">Figurki</a></li>
         <li><a href="#" data-shop-cat="zestawy">Zestawy</a></li>
         <li><a href="#" data-shop-cat="akcesoria">Akcesoria</a></li>
-        <li><a href="#" data-shop-cat="pdf">PDF do druku</a></li>
+        <li><a href="#" data-shop-cat="odziez">Odzież</a></li>
       </ul></div>
       <div><h4>Pomoc</h4><ul>
         <li><a href="#" data-stub>Dostawa i płatność</a></li>
@@ -1052,55 +1051,67 @@ const CATS = [
   {id:'wszystko', name:'Wszystko'},
   {id:'figurki',  name:'Figurki'},
   {id:'zestawy',  name:'Zestawy'},
-  {id:'akcesoria',name:'Akcesoria'},
-  {id:'pdf',      name:'PDF do druku'}
+  {id:'odziez',   name:'Odzież'},
+  {id:'akcesoria',name:'Akcesoria'}
 ];
+const SHOPIFY_IMG = 'https://cdn.shopify.com/s/files/1/1082/0295/0997/files/';
 const P = [
-  {id:'elf-bruno', cat:'figurki', name:'Elf Psotnik — Bruno', price:59.99, art:'art-elf', tone:'#8E1B23', bg:'#F5E4E0',
-   badge:'Bestseller', badgeType:'berry', desc:'Klasyczny psotnik w czerwonym stroju. Giętkie ramiona i nogi, wysokość 30 cm.'},
-  {id:'elf-mila', cat:'figurki', name:'Elfka Psotnica — Mila', price:59.99, art:'art-elf', tone:'#1F4D3A', bg:'#E6EDE4',
-   desc:'Elfka z warkoczykami i w wełnianej spódniczce. Ta sama magia, inny charakter.'},
-  {id:'elf-zloty', cat:'figurki', name:'Elf Psotnik — Złota Czapka', price:89.99, art:'art-elf', tone:'#B08B18', bg:'#F7EDD6',
-   badge:'Edycja limitowana', desc:'Wersja kolekcjonerska z ręcznie zdobioną czapką i numerowanym certyfikatem.'},
+  {id:'elf-psotnik-figurka', cat:'figurki', name:'Elf Psotnik – figurka ze zginanymi rękami i nogami', price:49.99,
+   img:SHOPIFY_IMG+'1.png?v=1793123793', tone:'#8E1B23', bg:'#F5E4E0', badge:'Bestseller', badgeType:'berry',
+   desc:'Świąteczna figurka z giętkimi drucikami w rękach i nogach — siedzi, stoi, wspina się i daje ustawić w każdej pozycji.',
+   dims:'Wysokość ok. 40 cm.'},
 
-  {id:'paka-start', cat:'zestawy', name:'Paka Startowa', price:149.99, art:'art-box', tone:'#8E1B23', bg:'#F5E4E0',
-   badge:'Najczęściej wybierane', badgeType:'berry', desc:'Elf, śpiworek, drzwi elfa i list powitalny od Mikołaja. Wszystko na start sezonu.'},
-  {id:'paka-rodzinna', cat:'zestawy', name:'Paka Rodzinna (2 elfy)', price:219.99, art:'art-box', tone:'#1F4D3A', bg:'#E6EDE4',
-   desc:'Bruno i Mila razem, komplet akcesoriów i podwójna dawka psot.'},
-  {id:'mystery', cat:'zestawy', name:'Mystery Box Psotnika', price:99.99, art:'art-box', tone:'#B08B18', bg:'#F7EDD6',
-   badge:'Nowość', desc:'Losowy zestaw akcesoriów o wartości wyższej niż cena pudełka. Zawartość — niespodzianka.'},
+  {id:'zestaw-czarodzieja', cat:'zestawy', name:'Zestaw czarodzieja dla Elfa Psotnika', price:49.99,
+   img:SHOPIFY_IMG+'11_54077b01-3aca-44c2-8f4a-e4396a1204bb.png?v=1793124287', tone:'#1F4D3A', bg:'#E6EDE4',
+   desc:'Czarno-czerwona peleryna z kapturem, pasiasty szalik i miniaturowa miotła — magiczna przemiana elfa w czarodzieja.'},
 
-  {id:'pizamka', cat:'akcesoria', name:'Piżamka w renifery', price:24.99, art:'art-sweater', tone:'#1F4D3A', bg:'#E6EDE4',
-   desc:'Bo elf też musi się czasem wyspać. Albo tylko udawać.'},
-  {id:'sweterek', cat:'akcesoria', name:'Świąteczny sweterek', price:29.99, art:'art-sweater', tone:'#8E1B23', bg:'#F5E4E0',
-   desc:'Dziergany wzór w płatki śniegu, pasuje na obie figurki.'},
-  {id:'spiworek', cat:'akcesoria', name:'Śpiworek elfa', price:24.99, art:'art-bed', tone:'#4E8298', bg:'#E4EDF2',
-   desc:'Miękkie legowisko na nocne dyżury pod choinką.'},
-  {id:'sanki', cat:'akcesoria', name:'Sanki elfa', price:34.99, art:'art-sled', tone:'#8E1B23', bg:'#F5E4E0',
-   desc:'Drewniane sanki do zjazdów z poręczy schodów.'},
-  {id:'hamak', cat:'akcesoria', name:'Mini-hamak', price:19.99, art:'art-bed', tone:'#4E8298', bg:'#E4EDF2',
-   desc:'Do rozwieszenia między gałązkami choinki.'},
-  {id:'mebelki', cat:'akcesoria', name:'Zestaw mebelków', price:49.99, art:'art-furniture', tone:'#1F4D3A', bg:'#E6EDE4',
-   desc:'Stolik i dwa krzesełka — idealne do elfiego śniadania.'},
-  {id:'drzwi', cat:'akcesoria', name:'Magiczne drzwi elfa', price:54.99, art:'art-door', tone:'#8E1B23', bg:'#F5E4E0',
-   badge:'Bestseller', badgeType:'berry', desc:'Portal na Biegun Północny, do przyklejenia na ścianę lub listwę.'},
-  {id:'znikopis', cat:'akcesoria', name:'Znikopis elfa', price:19.99, art:'art-note', tone:'#1F4D3A', bg:'#E6EDE4',
-   desc:'Mała tabliczka, na której elf zostawia poranne wiadomości.'},
-  {id:'lampka', cat:'akcesoria', name:'Lampka z projekcją', price:89.99, art:'art-lamp', tone:'#B08B18', bg:'#F7EDD6',
-   desc:'Rzuca na sufit gwiazdy i sylwetkę sań. Z timerem na 30 minut.'},
+  {id:'zestaw-kucharza', cat:'zestawy', name:'Zestaw kucharza dla Elfa Psotnika', price:49.99,
+   img:SHOPIFY_IMG+'19.png?v=1793124263', tone:'#B08B18', bg:'#F7EDD6',
+   desc:'Strój kucharza i miniaturowe akcesoria kuchenne — fartuszek, wałek, patelnia, jajka i więcej.'},
 
-  {id:'kalendarz', cat:'pdf', name:'Kalendarz Psot 2026 — 24 pomysły', price:39.99, art:'art-pdf', tone:'#8E1B23', bg:'#F5E4E0',
-   badge:'Do pobrania od razu', desc:'Jeden pomysł na każdy dzień grudnia, z listą potrzebnych rzeczy. Zero wymyślania o 23:00.'},
-  {id:'list-powitalny', cat:'pdf', name:'List powitalny od Mikołaja', price:7.99, art:'art-pdf', tone:'#1F4D3A', bg:'#E6EDE4',
-   badge:'Do pobrania od razu', desc:'Elegancki list, który elf przynosi ze sobą pierwszego grudnia.'},
-  {id:'list-pozegnalny', cat:'pdf', name:'List pożegnalny elfa', price:7.99, art:'art-pdf', tone:'#1F4D3A', bg:'#E6EDE4',
-   badge:'Do pobrania od razu', desc:'Na 24 grudnia — żeby zabawa miała piękne zakończenie.'},
-  {id:'certyfikat', cat:'pdf', name:'Certyfikat adopcji elfa', price:5.99, art:'art-pdf', tone:'#B08B18', bg:'#F7EDD6',
-   badge:'Do pobrania od razu', desc:'Miejsce na imię nadane przez dziecko i datę przybycia.'},
-  {id:'karty', cat:'pdf', name:'Karty zadań dla dzieci', price:14.99, art:'art-pdf', tone:'#4E8298', bg:'#E4EDF2',
-   badge:'Do pobrania od razu', desc:'30 kart z drobnymi misjami od elfa: od dobrego uczynku po sprzątanie zabawek.'},
-  {id:'pakiet-pdf', cat:'pdf', name:'Pakiet „Cała magia w PDF”', price:59.99, art:'art-pdf', tone:'#8E1B23', bg:'#F5E4E0',
-   badge:'Pakiet', desc:'Wszystkie pliki w jednym komplecie, taniej niż osobno.'}
+  {id:'kacik-elfa', cat:'zestawy', name:'Zestaw do kącika Elfa Psotnika', price:49.99,
+   img:SHOPIFY_IMG+'4_7c92159d-b789-4e91-946e-be8f1648d723.png?v=1793124347', tone:'#8E1B23', bg:'#F5E4E0',
+   badge:'Najczęściej wybierane', badgeType:'berry',
+   desc:'Komplet dekoracji na start: drzwi elfa, drabinka, choinka, buciki, wianek, lampion i więcej miniaturowych dodatków.'},
+
+  {id:'zestaw-ognisko', cat:'zestawy', name:'Zestaw ognisko dla Elfa Psotnika', price:49.99,
+   img:SHOPIFY_IMG+'4_53070268-9523-4cfd-bcb1-6ee327a82e1b.png?v=1793124374', tone:'#4E8298', bg:'#E4EDF2',
+   desc:'Miniaturowe ognisko, kociołek i stojak-trójnóg na zimowy biwak Elfa Psotnika.'},
+
+  {id:'hustawka-elfa', cat:'akcesoria', name:'Huśtawka dla Elfa Psotnika', price:49.99,
+   img:SHOPIFY_IMG+'2_0e41a479-7d48-42ca-8e4e-73ac7d3eb172.png?v=1793124354', tone:'#1F4D3A', bg:'#E6EDE4',
+   desc:'Drewniane siedzisko, czerwono-biały sznurek i świąteczne pomponiki — do zawieszenia przy półce lub choince.',
+   dims:'Siedzisko 8 × 4 cm, sznurek ok. 60 cm.'},
+
+  {id:'drewniana-drabinka', cat:'akcesoria', name:'Drewniana drabinka dla Elfa Psotnika', price:49.99,
+   img:SHOPIFY_IMG+'2_18204c21-cf5e-4585-8f00-f34dd4390bea.png?v=1793124373', tone:'#8E1B23', bg:'#F5E4E0',
+   desc:'Drewniane szczebelki na sznurku — scenka ze wspinającym się elfem w dowolnym miejscu w domu.',
+   dims:'Długość 90 cm, szerokość 8 cm.'},
+
+  {id:'worek-z-bakami', cat:'akcesoria', name:'Worek z bąkami Elfa Psotnika – Bag of Farts', price:49.99,
+   img:SHOPIFY_IMG+'8.png?v=1793123716', tone:'#B08B18', bg:'#F7EDD6',
+   desc:'Czerwony woreczek, który po naciśnięciu wydaje zabawny dźwięk — gotowy pomysł na prostą psotę.',
+   dims:'Wysokość ok. 13,5 cm, szerokość ok. 9,5 cm.'},
+
+  {id:'sanki-elfa', cat:'akcesoria', name:'Sanki dla Elfa Psotnika', price:49.99,
+   img:SHOPIFY_IMG+'7.png?v=1793123559', tone:'#4E8298', bg:'#E4EDF2',
+   desc:'Czerwone, lakierowane sanki z zagiętymi płozami — zimowa wyprawa elfa po prezenty.'},
+
+  {id:'fartuch-i-czapka', cat:'odziez', name:'Świąteczny fartuch i czapka dla Elfa Psotnika', price:49.99,
+   img:SHOPIFY_IMG+'3_2d9f375c-b663-4d02-901f-a43faed0a020.png?v=1793124373', tone:'#1F4D3A', bg:'#E6EDE4',
+   desc:'Zielono-czerwony fartuszek z kieszonkami i dopasowana czapka z białym pomponem.'},
+
+  {id:'bluza-67-biala', cat:'odziez', name:'Biała bluza 67 dla Elfa Psotnika', price:49.99,
+   img:SHOPIFY_IMG+'3_73eb37f1-6de4-496e-9ecd-3ff1055dc4c4.png?v=1793124279', tone:'#4E8298', bg:'#E4EDF2',
+   desc:'Biała bluza z kapturem i zielonym nadrukiem „67” — nowoczesna odmiana wyglądu elfa.'},
+
+  {id:'bluza-67-czerwona', cat:'odziez', name:'Czerwona bluza 67 dla Elfa Psotnika', price:49.99,
+   img:SHOPIFY_IMG+'9_dae7c914-79b9-459f-bf4f-7ea2c0b57678.png?v=1793124314', tone:'#8E1B23', bg:'#F5E4E0',
+   desc:'Czerwona bluza z kapturem i zielonym nadrukiem „67” w klasycznej bożonarodzeniowej kolorystyce.'},
+
+  {id:'bluza-67-czarna', cat:'odziez', name:'Czarna bluza 67 dla Elfa Psotnika', price:49.99,
+   img:SHOPIFY_IMG+'15.png?v=1793124331', tone:'#B08B18', bg:'#F7EDD6',
+   desc:'Czarna bluza z kapturem i złotym nadrukiem „67” — wyrazista stylizacja na zdjęcia.'}
 ];
 const byId = id => P.find(p=>p.id===id);
 const catName = id => (CATS.find(c=>c.id===id)||{}).name || '';
@@ -1119,7 +1130,9 @@ const PRANKS = [
 ];
 
 /* ---------------- art helpers ---------------- */
-const artSvg = (p, cls='art') => `<svg class="${cls}" aria-hidden="true" viewBox="${p.art==='art-elf'?'0 0 100 130':'0 0 100 100'}" style="color:${p.tone}"><use href="#${p.art}"/></svg>`;
+const artSvg = (p, cls='art') => p.img
+  ? `<img class="${cls}" src="${p.img}" alt="${esc(p.name)}" loading="lazy" style="object-fit:contain">`
+  : `<svg class="${cls}" aria-hidden="true" viewBox="${p.art==='art-elf'?'0 0 100 130':'0 0 100 100'}" style="color:${p.tone}"><use href="#${p.art}"/></svg>`;
 
 function cardHTML(p){
   return `<article class="card">
@@ -1160,7 +1173,7 @@ function scrollTo(id){
 }
 
 /* ---------------- render: home ---------------- */
-$('#featured').innerHTML = ['elf-bruno','elf-mila','paka-start','kalendarz'].map(id=>cardHTML(byId(id))).join('');
+$('#featured').innerHTML = ['elf-psotnik-figurka','kacik-elfa','zestaw-czarodzieja','worek-z-bakami'].map(id=>cardHTML(byId(id))).join('');
 $('#prankCards').innerHTML = PRANKS.slice(0,3).map(p=>`
   <article class="prank">
     <p class="prank__meta"><span>${esc(p.m)}</span> • <span>gotowe</span></p>
@@ -1168,7 +1181,7 @@ $('#prankCards').innerHTML = PRANKS.slice(0,3).map(p=>`
     <p>${esc(p.d)}</p>
     <p class="prank__items">potrzebne: ${esc(p.i)}</p>
   </article>`).join('');
-$('#igGrid').innerHTML = ['elf-bruno','sanki','drzwi','elf-mila','lampka','spiworek']
+$('#igGrid').innerHTML = ['elf-psotnik-figurka','sanki-elfa','drewniana-drabinka','zestaw-czarodzieja','worek-z-bakami','hustawka-elfa']
   .map(id=>{const p=byId(id); return `<a class="ig__tile" style="background:${p.bg}" href="https://www.instagram.com/elfpsotnik/" target="_blank" rel="noopener" aria-label="Instagram">${artSvg(p)}</a>`;}).join('');
 
 /* ---------------- render: shop ---------------- */
@@ -1190,19 +1203,13 @@ function renderShop(){
 renderShop();
 
 /* ---------------- render: product ---------------- */
-let pdpState = {id:'elf-bruno', variant:'elf-bruno', name:'', qty:1, shot:0};
-const SHOTS = [
-  {label:'Cały elf', bg:null},
-  {label:'Zbliżenie', bg:'#EFE7DA'},
-  {label:'W scenie', bg:'#E6EDE4'},
-  {label:'Pudełko', bg:'#F5E4E0', art:'art-box'}
-];
+let pdpState = {id:'elf-psotnik-figurka', variant:'elf-psotnik-figurka', name:'', qty:1, shot:0};
+let currentBundleIds = [];
 function renderPDP(id){
   const base = byId(id);
   pdpState = {id, variant:id, name:'', qty:1, shot:0};
   $('#pdpCrumb').textContent = base.name;
   const isFig = base.cat==='figurki';
-  const isPdf = base.cat==='pdf';
 
   $('#pdpInfo').innerHTML = `
     <div>
@@ -1213,13 +1220,6 @@ function renderPDP(id){
     <p class="price" id="pdpPrice">${zl(base.price)}</p>
     <p class="lead" style="font-size:1rem">${esc(base.desc)}</p>
     ${isFig?`
-      <div class="field">
-        <label>Wybierz postać</label>
-        <div class="variants" id="pdpVariants">
-          <button class="variant" data-variant="elf-bruno" aria-pressed="true">${artSvg(byId('elf-bruno'))} Elf Bruno</button>
-          <button class="variant" data-variant="elf-mila" aria-pressed="false">${artSvg(byId('elf-mila'))} Elfka Mila</button>
-        </div>
-      </div>
       <div class="field">
         <label for="elfName">Nadaj imię swojemu elfowi</label>
         <input id="elfName" type="text" maxlength="18" placeholder="np. Bombelek, Franek, Psotek" autocomplete="off">
@@ -1235,31 +1235,26 @@ function renderPDP(id){
     </div>
     <div class="ship-note">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>
-      <span>${isPdf
-        ? 'Plik do pobrania od razu po zakupie — bez kosztów wysyłki. <span class="demo-note">Dane poglądowe.</span>'
-        : 'Wysyłka w 24 h (Paczkomaty InPost 15 zł, kurier InPost 18 zł, kurier DPD 19 zł), darmowa dostawa od 200 zł. Zamówienia do 20 grudnia dojeżdżają przed Wigilią.'}</span>
+      <span>Wysyłka w 24 h (Paczkomaty InPost 15 zł, kurier InPost 18 zł, kurier DPD 19 zł), darmowa dostawa od 200 zł. Zamówienia do 20 grudnia dojeżdżają przed Wigilią.</span>
     </div>
     <div class="acc">
-      ${accItem('Opis szczegółowy', isPdf
-        ? 'Plik PDF w formacie A4, przygotowany do druku na zwykłej domowej drukarce. Po zakupie trafia na Twój e-mail i do panelu zamówień — możesz go wydrukować dowolną liczbę razy.'
-        : 'Figurka uszyta z miękkiej tkaniny, z giętkim drutem w ramionach i nogach. Siada, stoi, wisi i daje się ustawić w każdej pozycji, której wymaga poranna psota. Twarz z żywicy, malowana ręcznie.')}
-      ${accItem('Wymiary i materiały', isPdf
-        ? 'Format A4, pliki wektorowe przygotowane w 300 dpi. Rozmiar paczki: ok. 4 MB.'
-        : 'Wysokość ok. 30 cm. Tkanina poliestrowa, wypełnienie antyalergiczne, elementy twarzy z żywicy. Czyszczenie na sucho.')}
-      ${accItem('Dostawa i zwroty', 'Wysyłka kurierem lub do punktu odbioru w 24 h od zamówienia. 14 dni na zwrot bez podania przyczyny. Produkty cyfrowe nie podlegają zwrotowi po pobraniu pliku.')}
-      ${accItem('Dla jakiego wieku', 'Zabawa sprawdza się najlepiej między 3. a 10. rokiem życia. Figurka zgodna z normą EN 71 dla zabawek.')}
+      ${accItem('Opis szczegółowy', base.desc)}
+      ${accItem('Wymiary i materiały', base.dims || 'Wymiary orientacyjne — dokładne dane po dodaniu przez sprzedawcę.')}
+      ${accItem('Dostawa i zwroty', 'Wysyłka kurierem lub do punktu odbioru w 24 h od zamówienia. 14 dni na zwrot bez podania przyczyny.')}
+      ${accItem('Dla jakiego wieku', 'Zabawa sprawdza się najlepiej między 3. a 10. rokiem życia.')}
     </div>
     <p class="demo-note">Wersja demonstracyjna — opisy i parametry przykładowe.</p>`;
 
-  const shots = isFig ? SHOTS : SHOTS.slice(0,3);
-  $('#pdpThumbs').innerHTML = shots.map((s,i)=>{
-    const p = s.art ? {...base, art:s.art} : base;
-    return `<button class="thumb" data-shot="${i}" aria-pressed="${i===0}" style="background:${s.bg||base.bg}" aria-label="${esc(s.label)}">${artSvg(p)}</button>`;
-  }).join('');
+  $('#pdpThumbs').innerHTML = '';
+  $('#pdpThumbs').hidden = true;
   paintMain();
 
-  $('#crossSell').innerHTML = ['spiworek','drzwi','sanki','pizamka'].map(i=>cardHTML(byId(i))).join('');
-  const bundleIds = ['elf-bruno','spiworek','kalendarz'];
+  const crossIds = P.filter(p=>p.id!==base.id && p.cat===base.cat).slice(0,4).map(p=>p.id);
+  const fallbackIds = P.filter(p=>p.id!==base.id).slice(0,4).map(p=>p.id);
+  $('#crossSell').innerHTML = (crossIds.length?crossIds:fallbackIds).map(i=>cardHTML(byId(i))).join('');
+
+  const bundleIds = [base.id, ...P.filter(p=>p.id!==base.id).slice(0,2).map(p=>p.id)];
+  currentBundleIds = bundleIds;
   const sum = bundleIds.reduce((s,i)=>s+byId(i).price,0);
   const deal = Math.round((sum*0.9)*100)/100;
   $('#bundle').innerHTML = `
@@ -1267,8 +1262,8 @@ function renderPDP(id){
       ${bundleIds.map((i,n)=>`${n?'<i>+</i>':''}<span class="b-art" style="background:${byId(i).bg}">${artSvg(byId(i))}</span>`).join('')}
     </div>
     <div style="min-width:200px;flex:1">
-      <h3>Elf + śpiworek + Kalendarz Psot</h3>
-      <p class="demo-note" style="color:var(--ink-soft)">Zestaw, który zamyka cały grudzień: figurka, miejsce do spania i 24 gotowe pomysły.</p>
+      <h3>${bundleIds.map(i=>byId(i).name.split(' ').slice(0,2).join(' ')).join(' + ')}</h3>
+      <p class="demo-note" style="color:var(--ink-soft)">Zestaw, który zamyka cały grudzień gotowymi pomysłami na psoty.</p>
     </div>
     <div class="bundle__sum">
       <s>${zl(sum)}</s>
@@ -1284,12 +1279,9 @@ function accItem(title, body){
 }
 function paintMain(){
   const base = byId(pdpState.variant);
-  const shots = base.cat==='figurki' ? SHOTS : SHOTS.slice(0,3);
-  const s = shots[pdpState.shot] || shots[0];
-  const p = s.art ? {...base, art:s.art} : base;
   const main = $('#pdpMain');
-  main.style.setProperty('--art-bg', s.bg || base.bg);
-  main.innerHTML = artSvg(p);
+  main.style.setProperty('--art-bg', base.bg);
+  main.innerHTML = artSvg(base);
 }
 
 /* ---------------- cart ---------------- */
@@ -1679,8 +1671,8 @@ function answer(id){
   else if(id==='imie'){
     say('me','Jak nadać imię elfowi?');
     typing(950, ()=>{
-      say('bot','Pierwszego grudnia dziecko wybiera imię — i od tej chwili elf nie jest już zabawką, tylko domownikiem. To ten moment, który sprawia, że cała reszta grudnia działa.<em>Imię możesz wpisać przy zamówieniu — wpiszemy je na certyfikat.</em>');
-      pushNode(productCard('certyfikat','Do wydrukowania i wpisania daty przybycia.'));
+      say('bot','Pierwszego grudnia dziecko wybiera imię — i od tej chwili elf nie jest już zabawką, tylko domownikiem. To ten moment, który sprawia, że cała reszta grudnia działa.<em>Imię możesz wpisać przy zamówieniu, w polu personalizacji.</em>');
+      pushNode(productCard('elf-psotnik-figurka','Imię wpiszesz przy zamówieniu, w polu personalizacji.'));
       renderQuick(QUICK);
     });
   }
@@ -1701,14 +1693,16 @@ function answer(id){
     typing(950, ()=>{
       if(id==='dzieci-1'){
         say('bot','Wtedy jeden elf w zupełności wystarczy — i tak będzie miał pełne ręce roboty.');
-        pushNode(productCard('paka-start','Elf, śpiworek, drzwi i list powitalny. Komplet na pierwszy sezon.'));
+        pushNode(productCard('elf-psotnik-figurka','Figurka elfa — komplet na pierwszy sezon.'));
+        pushNode(productCard('kacik-elfa','Dodatki do pierwszej aranżacji.'));
       } else if(id==='dzieci-2'){
-        say('bot','Przy dwójce polecam dwa elfy. Mniej sporów o to, kto pierwszy go znalazł.');
-        pushNode(productCard('paka-rodzinna','Bruno i Mila razem, z kompletem akcesoriów.'));
+        say('bot','Przy dwójce polecam dwie figurki. Mniej sporów o to, kto pierwszy go znalazł.');
+        pushNode(productCard('elf-psotnik-figurka','Weź dwie sztuki — każde dziecko ma swojego elfa.'));
+        pushNode(productCard('zestaw-czarodzieja','Dodatkowy strój na zmianę scenerii.'));
       } else {
-        say('bot','Przy trójce sprawdza się para elfów plus zapas akcesoriów na zmiany scenerii.');
-        pushNode(productCard('paka-rodzinna','Baza dla całej rodziny.'));
-        pushNode(productCard('mystery','Dorzuć losowy zestaw dodatków — wystarczy na kilka dodatkowych poranków.'));
+        say('bot','Przy trójce sprawdza się kilka figurek plus zapas akcesoriów na zmiany scenerii.');
+        pushNode(productCard('elf-psotnik-figurka','Figurka do powielenia dla każdego dziecka.'));
+        pushNode(productCard('worek-z-bakami','Losowy dodatek na kilka dodatkowych poranków.'));
       }
       renderQuick(QUICK);
     });
@@ -1717,7 +1711,7 @@ function answer(id){
     say('me','Zasady zabawy');
     typing(900, ()=>{
       say('bot','Trzy, ani jednej więcej:<ul><li>Elf przylatuje 1 grudnia i zostaje do Wigilii.</li><li>Co noc zmienia kryjówkę i zostawia po sobie ślad.</li><li>Nie wolno go dotykać — traci wtedy magię i nie wróci na Biegun.</li></ul>');
-      pushNode(productCard('list-powitalny','List, którym elf przedstawia się pierwszego dnia.'));
+      pushNode(productCard('kacik-elfa','Drzwi elfa i dekoracje na pierwszy dzień zabawy.'));
       renderQuick(QUICK);
     });
   }
@@ -1766,7 +1760,7 @@ document.addEventListener('click', e=>{
   if(add){ addToCart(add.dataset.add,1); openDrawer(true); return; }
 
   if(t.closest('[data-add-bundle]')){
-    ['elf-bruno','spiworek','kalendarz'].forEach(i=>{
+    currentBundleIds.forEach(i=>{
       const key = i+'|'; const row = cart.find(r=>r.key===key);
       if(row) row.qty++; else cart.push({key, id:i, qty:1, elfName:''});
     });
