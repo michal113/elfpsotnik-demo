@@ -1237,7 +1237,7 @@ function renderPDP(id){
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>
       <span>${isPdf
         ? 'Plik do pobrania od razu po zakupie — bez kosztów wysyłki. <span class="demo-note">Dane poglądowe.</span>'
-        : 'Wysyłka w 24 h, darmowa dostawa od 199 zł. Zamówienia do 20 grudnia dojeżdżają przed Wigilią. <span class="demo-note">Dane poglądowe.</span>'}</span>
+        : 'Wysyłka w 24 h (Paczkomaty InPost 15 zł, kurier InPost 18 zł, kurier DPD 19 zł), darmowa dostawa od 200 zł. Zamówienia do 20 grudnia dojeżdżają przed Wigilią.'}</span>
     </div>
     <div class="acc">
       ${accItem('Opis szczegółowy', isPdf
@@ -1293,7 +1293,7 @@ function paintMain(){
 }
 
 /* ---------------- cart ---------------- */
-const SHIP_FREE = 199, SHIP_COST = 14.99;
+const SHIP_FREE = 200, SHIP_COST = 15; // od (Paczkomaty InPost 15 zł / kurier InPost 18 zł / kurier DPD 19 zł — wybór na checkout)
 let cart = [];
 try{ const raw = localStorage.getItem('elf-cart'); if(raw) cart = JSON.parse(raw)||[]; }catch(e){}
 function saveCart(){ try{ localStorage.setItem('elf-cart', JSON.stringify(cart)); }catch(e){} }
@@ -1352,7 +1352,7 @@ function renderCart(){
       <div class="ship-bar"><i style="width:${Math.min(100,(total/SHIP_FREE)*100).toFixed(1)}%"></i></div>
     </div>
     <div class="sumrow"><span>Produkty</span><span>${zl(total)}</span></div>
-    <div class="sumrow"><span>Dostawa</span><span>${ship===0?'0,00 zł':zl(ship)}</span></div>
+    <div class="sumrow"><span>Dostawa</span><span>${ship===0?'0,00 zł':'od '+zl(ship)}</span></div>
     <div class="sumrow sumrow--total"><span>Razem</span><span>${zl(total+ship)}</span></div>
     <button class="btn btn--primary btn--block btn--lg" id="checkout">Przejdź do płatności</button>
     <p class="demo-note" style="text-align:center">Wersja demonstracyjna — płatności nieaktywne.</p>`;
