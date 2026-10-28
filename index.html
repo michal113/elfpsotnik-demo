@@ -471,6 +471,18 @@ footer a:hover{color:var(--lamp)}
 .modal__elf{width:86px;height:auto}
 .pays{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:4px}
 .pay{border:1px solid var(--line);border-radius:8px;padding:6px 11px;font-size:.78rem;font-weight:700;color:var(--ink-soft)}
+.modal__box--doc{max-width:720px;text-align:left;align-items:stretch;padding:0;overflow:hidden}
+.doc__head{display:flex;align-items:center;justify-content:space-between;padding:20px 26px;border-bottom:1px solid var(--line)}
+.doc__head h3{font-size:1.2rem;margin:0}
+.doc__close{border:none;background:none;cursor:pointer;color:var(--ink-soft);font-size:1.4rem;line-height:1;padding:4px}
+.doc__close:hover{color:var(--ink)}
+.doc__body{padding:22px 26px 28px;overflow-y:auto;max-height:70vh;font-size:.92rem;line-height:1.6;color:var(--ink-soft)}
+.doc__body h4{color:var(--ink);font-size:1rem;margin:20px 0 6px}
+.doc__body h4:first-child{margin-top:0}
+.doc__body p{margin:0 0 10px}
+.doc__body ul{margin:0 0 10px;padding-left:20px}
+.doc__body li{margin-bottom:4px}
+.doc__placeholder{background:#FFF4D6;color:#6b5a1e;padding:1px 5px;border-radius:4px;font-weight:600}
 
 /* ---------- toast ---------- */
 .toasts{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:120;
@@ -999,10 +1011,10 @@ footer a:hover{color:var(--lamp)}
         <li><a href="#" data-shop-cat="odziez">Odzież</a></li>
       </ul></div>
       <div><h4>Pomoc</h4><ul>
-        <li><a href="#" data-stub>Dostawa i płatność</a></li>
-        <li><a href="#" data-stub>Zwroty i reklamacje</a></li>
-        <li><a href="#" data-stub>Regulamin</a></li>
-        <li><a href="#" data-stub>Polityka prywatności</a></li>
+        <li><a href="#" data-legal="dostawa">Dostawa i płatność</a></li>
+        <li><a href="#" data-legal="zwroty">Zwroty i reklamacje</a></li>
+        <li><a href="#" data-legal="regulamin">Regulamin</a></li>
+        <li><a href="#" data-legal="prywatnosc">Polityka prywatności</a></li>
       </ul></div>
       <div><h4>Kontakt</h4><ul>
         <li><a href="#" data-stub>kontakt@elfpsotnik.pl</a></li>
@@ -1471,6 +1483,89 @@ function toast(msg){
   $('#toasts').appendChild(t);
   setTimeout(()=>t.remove(), 2600);
 }
+function ph(txt){ return `<span class="doc__placeholder">${txt}</span>`; }
+const LEGAL_SELLER = `${ph('[nazwa firmy]')}, ${ph('[adres]')}, NIP ${ph('[NIP]')}, e-mail ${ph('kontakt@elfpsotnik.pl')}`;
+const LEGAL_DOCS = {
+  dostawa: { title: 'Dostawa i płatność', html: `
+    <h4>Czas realizacji</h4>
+    <p>Zamówienia składane do godz. 14:00 w dni robocze wysyłamy w ciągu 24 godzin. W okresie przedświątecznym prosimy o złożenie zamówienia do 20 grudnia, aby paczka dotarła przed Wigilią — po tym terminie nie gwarantujemy dostawy przed świętami.</p>
+    <h4>Koszty i sposoby dostawy (Polska)</h4>
+    <ul>
+      <li>Paczkomaty InPost — 15 zł</li>
+      <li>Kurier InPost — 18 zł</li>
+      <li>Kurier DPD — 19 zł</li>
+      <li>Darmowa dostawa przy zamówieniu od 200 zł (dowolny z powyższych sposobów)</li>
+    </ul>
+    <p>Obecnie wysyłamy wyłącznie na terytorium Polski.</p>
+    <h4>Płatność</h4>
+    <p>Płatność następuje online, z góry, bezpośrednio po złożeniu zamówienia (BLIK, karta płatnicza, przelew online). Realizację zamówienia zaczynamy po potwierdzeniu płatności.</p>
+  `},
+  zwroty: { title: 'Zwroty i reklamacje', html: `
+    <h4>Odstąpienie od umowy (14 dni)</h4>
+    <p>Jako konsument masz prawo odstąpić od umowy bez podania przyczyny w terminie 14 dni od otrzymania przesyłki. Wystarczy przesłać nam jednoznaczne oświadczenie o odstąpieniu (np. e-mailem na ${ph('kontakt@elfpsotnik.pl')} lub pisemnie) przed upływem tego terminu.</p>
+    <p>Zwracany towar należy odesłać niezwłocznie, nie później niż 14 dni od dnia złożenia oświadczenia o odstąpieniu, na adres: ${ph('[adres do zwrotów]')}. Koszt odesłania towaru pokrywa kupujący.</p>
+    <p>Pieniądze (w tym koszt dostawy do klienta) zwracamy w ciągu 14 dni od otrzymania oświadczenia, przy czym możemy wstrzymać się ze zwrotem do otrzymania towaru lub potwierdzenia jego odesłania. Zwrot następuje tym samym sposobem płatności, jakim zapłacono — chyba że wyraźnie zgodzono się na inny sposób.</p>
+    <h4>Reklamacje (rękojmia)</h4>
+    <p>Jeśli produkt jest niezgodny z umową (wada fizyczna lub prawna), możesz złożyć reklamację z tytułu rękojmi — odpowiadamy za to przez 2 lata od wydania towaru. Zgłoszenie wyślij na ${ph('kontakt@elfpsotnik.pl')}, opisując wadę i swoje żądanie (naprawa, wymiana, obniżenie ceny lub odstąpienie od umowy). Na rozpatrzenie reklamacji mamy 14 dni.</p>
+    <h4>Jak zgłosić zwrot lub reklamację</h4>
+    <ul>
+      <li>Napisz do nas na ${ph('kontakt@elfpsotnik.pl')}, podając numer zamówienia.</li>
+      <li>Opisz, czy chcesz odstąpić od umowy (zwrot) czy zgłaszasz wadę towaru (reklamacja).</li>
+      <li>Odezwiemy się z dalszymi instrukcjami, w tym adresem do odesłania towaru.</li>
+    </ul>
+  `},
+  regulamin: { title: 'Regulamin sklepu', html: `
+    <h4>1. Postanowienia ogólne</h4>
+    <p>Sklep internetowy elfpsotnik.pl prowadzony jest przez: ${LEGAL_SELLER}. Regulamin określa zasady korzystania ze sklepu, składania zamówień, płatności, dostawy oraz odstąpienia od umowy i reklamacji.</p>
+    <h4>2. Zamówienia</h4>
+    <p>Zamówienia można składać przez stronę elfpsotnik.pl 24 godziny na dobę. Złożenie zamówienia wymaga akceptacji regulaminu oraz dokonania płatności online. Umowa sprzedaży zostaje zawarta w momencie potwierdzenia przyjęcia zamówienia przez sprzedawcę.</p>
+    <h4>3. Ceny i płatność</h4>
+    <p>Ceny podane na stronie są cenami brutto, wyrażonymi w złotych polskich i nie zawierają kosztów dostawy, które są wskazywane odrębnie przed złożeniem zamówienia. Płatność realizowana jest online z góry.</p>
+    <h4>4. Dostawa</h4>
+    <p>Zasady i koszty dostawy opisane są w zakładce „Dostawa i płatność”. Towar wysyłany jest wyłącznie na terytorium Polski.</p>
+    <h4>5. Prawo odstąpienia od umowy</h4>
+    <p>Konsumentowi przysługuje prawo odstąpienia od umowy w terminie 14 dni bez podania przyczyny, zgodnie z ustawą o prawach konsumenta. Szczegóły opisane są w zakładce „Zwroty i reklamacje”.</p>
+    <h4>6. Reklamacje</h4>
+    <p>Sprzedawca odpowiada za zgodność towaru z umową na zasadach rękojmi. Reklamacje można składać na adres ${ph('kontakt@elfpsotnik.pl')}. Szczegóły w zakładce „Zwroty i reklamacje”.</p>
+    <h4>7. Dane osobowe</h4>
+    <p>Zasady przetwarzania danych osobowych opisane są w Polityce prywatności.</p>
+    <h4>8. Postanowienia końcowe</h4>
+    <p>W sprawach nieuregulowanych niniejszym regulaminem zastosowanie mają przepisy prawa polskiego, w szczególności Kodeksu cywilnego i ustawy o prawach konsumenta. Regulamin dostępny jest w każdym czasie na stronie elfpsotnik.pl.</p>
+    <p style="margin-top:16px;font-size:.84rem">Ostatnia aktualizacja: ${ph('[data]')}.</p>
+  `},
+  prywatnosc: { title: 'Polityka prywatności', html: `
+    <h4>Administrator danych</h4>
+    <p>Administratorem danych osobowych zbieranych przez sklep elfpsotnik.pl jest: ${LEGAL_SELLER}.</p>
+    <h4>Jakie dane zbieramy i w jakim celu</h4>
+    <ul>
+      <li>Dane podane przy zamówieniu (imię i nazwisko, adres dostawy, e-mail, telefon) — w celu realizacji i rozliczenia zamówienia oraz kontaktu w sprawie dostawy.</li>
+      <li>Dane niezbędne do rozpatrzenia zwrotów i reklamacji.</li>
+      <li>Dane podane w rozmowie z chatbotem / formularzu kontaktowym — w celu udzielenia odpowiedzi.</li>
+    </ul>
+    <p>Podstawą przetwarzania jest wykonanie umowy (art. 6 ust. 1 lit. b RODO), a w zakresie kontaktu — prawnie uzasadniony interes administratora (art. 6 ust. 1 lit. f RODO).</p>
+    <h4>Komu przekazujemy dane</h4>
+    <p>Dane mogą być przekazywane podmiotom niezbędnym do realizacji zamówienia: operatorowi platformy sklepowej (Shopify), firmom kurierskim i operatorom punktów odbioru (InPost, DPD) oraz dostawcy płatności online.</p>
+    <h4>Okres przechowywania</h4>
+    <p>Dane przechowujemy przez czas niezbędny do realizacji zamówienia, a następnie przez okres wymagany przepisami podatkowymi i rachunkowymi (zwykle 5 lat) lub do czasu przedawnienia roszczeń.</p>
+    <h4>Twoje prawa</h4>
+    <p>Masz prawo dostępu do swoich danych, ich sprostowania, usunięcia, ograniczenia przetwarzania, przenoszenia danych oraz wniesienia sprzeciwu, a także prawo wniesienia skargi do Prezesa Urzędu Ochrony Danych Osobowych. W tych sprawach napisz na ${ph('kontakt@elfpsotnik.pl')}.</p>
+    <h4>Cookies</h4>
+    <p>Strona wykorzystuje pliki cookies niezbędne do jej działania (np. zapamiętanie koszyka). Korzystając ze strony, wyrażasz zgodę na ich użycie zgodnie z niniejszą polityką.</p>
+    <p style="margin-top:16px;font-size:.84rem">Ostatnia aktualizacja: ${ph('[data]')}.</p>
+  `}
+};
+function legalModal(key){
+  const doc = LEGAL_DOCS[key];
+  if(!doc) return;
+  const m = document.createElement('div');
+  m.className='modal';
+  m.innerHTML = `<div class="modal__box modal__box--doc" role="dialog" aria-modal="true" aria-label="${esc(doc.title)}">
+    <div class="doc__head"><h3>${esc(doc.title)}</h3><button class="doc__close" data-close-modal aria-label="Zamknij">×</button></div>
+    <div class="doc__body">${doc.html}</div>
+  </div>`;
+  document.body.appendChild(m);
+  m.addEventListener('click', e=>{ if(e.target===m || e.target.closest('[data-close-modal]')) m.remove(); });
+}
 async function checkoutModal(){
   const btn = $('#checkout');
   if(btn){ btn.disabled = true; btn.textContent = 'Łączenie z płatnością…'; }
@@ -1850,6 +1945,8 @@ document.addEventListener('click', e=>{
     const n = $('#navlinks'); const open = n.dataset.open==='true';
     n.dataset.open = String(!open); $('#burger').setAttribute('aria-expanded', String(!open)); return;
   }
+  const legal = t.closest('[data-legal]');
+  if(legal){ e.preventDefault(); legalModal(legal.dataset.legal); return; }
   const stub = t.closest('[data-stub]');
   if(stub){ e.preventDefault(); toast('To tylko podgląd wersji demo'); return; }
 });
