@@ -1865,6 +1865,21 @@ setTimeout(()=>{ if(!bot.open) $('#botTeaser').hidden = false;
   setTimeout(()=>{ const t=$('#botTeaser'); if(t) t.hidden = true; }, 10000);
 }, 6000);
 
+/* Psotek jest głównym elementem strony — otwiera się sam po kawałku scrolla, jednorazowo na wizytę */
+(function(){
+  let triggered = false;
+  function maybeAutoOpenBot(){
+    if(triggered || bot.open) return;
+    const threshold = Math.min(500, window.innerHeight * 0.5);
+    if(window.scrollY > threshold){
+      triggered = true;
+      window.removeEventListener('scroll', maybeAutoOpenBot);
+      botOpen();
+    }
+  }
+  window.addEventListener('scroll', maybeAutoOpenBot, {passive:true});
+})();
+
 /* ---------------- global events ---------------- */
 document.addEventListener('click', e=>{
   const t = e.target;
