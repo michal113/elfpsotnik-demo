@@ -1017,7 +1017,7 @@ footer a:hover{color:var(--lamp)}
         <li><a href="#" data-legal="prywatnosc">Polityka prywatności</a></li>
       </ul></div>
       <div><h4>Kontakt</h4><ul>
-        <li><a href="#" data-stub>kontakt@elfpsotnik.pl</a></li>
+        <li><a href="mailto:kontakt@akelements.pl">kontakt@akelements.pl</a></li>
         <li><a href="https://www.instagram.com/elfpsotnik/" target="_blank" rel="noopener">Instagram @elfpsotnik</a></li>
         <li><a href="#" data-stub>Współpraca</a></li>
       </ul></div>
@@ -1717,7 +1717,7 @@ function toast(msg){
   setTimeout(()=>t.remove(), 2600);
 }
 function ph(txt){ return `<span class="doc__placeholder">${txt}</span>`; }
-const LEGAL_SELLER = `${ph('[nazwa firmy]')}, ${ph('[adres]')}, NIP ${ph('[NIP]')}, e-mail ${ph('kontakt@elfpsotnik.pl')}`;
+const LEGAL_SELLER = `AK Elements Agnieszka Krawczyńska, Gnieździska 191, 26-070 Łopuszno, NIP 9591648506, e-mail kontakt@akelements.pl`;
 const LEGAL_DOCS = {
   dostawa: { title: 'Dostawa i płatność', html: `
     <h4>Czas realizacji</h4>
@@ -1735,14 +1735,14 @@ const LEGAL_DOCS = {
   `},
   zwroty: { title: 'Zwroty i reklamacje', html: `
     <h4>Odstąpienie od umowy (14 dni)</h4>
-    <p>Jako konsument masz prawo odstąpić od umowy bez podania przyczyny w terminie 14 dni od otrzymania przesyłki. Wystarczy przesłać nam jednoznaczne oświadczenie o odstąpieniu (np. e-mailem na ${ph('kontakt@elfpsotnik.pl')} lub pisemnie) przed upływem tego terminu.</p>
-    <p>Zwracany towar należy odesłać niezwłocznie, nie później niż 14 dni od dnia złożenia oświadczenia o odstąpieniu, na adres: ${ph('[adres do zwrotów]')}. Koszt odesłania towaru pokrywa kupujący.</p>
+    <p>Jako konsument masz prawo odstąpić od umowy bez podania przyczyny w terminie 14 dni od otrzymania przesyłki. Wystarczy przesłać nam jednoznaczne oświadczenie o odstąpieniu (np. e-mailem na kontakt@akelements.pl lub pisemnie) przed upływem tego terminu.</p>
+    <p>Zwracany towar należy odesłać niezwłocznie, nie później niż 14 dni od dnia złożenia oświadczenia o odstąpieniu, na adres: AK Elements Agnieszka Krawczyńska, Gnieździska 191, 26-070 Łopuszno. Koszt odesłania towaru pokrywa kupujący.</p>
     <p>Pieniądze (w tym koszt dostawy do klienta) zwracamy w ciągu 14 dni od otrzymania oświadczenia, przy czym możemy wstrzymać się ze zwrotem do otrzymania towaru lub potwierdzenia jego odesłania. Zwrot następuje tym samym sposobem płatności, jakim zapłacono — chyba że wyraźnie zgodzono się na inny sposób.</p>
     <h4>Reklamacje (rękojmia)</h4>
-    <p>Jeśli produkt jest niezgodny z umową (wada fizyczna lub prawna), możesz złożyć reklamację z tytułu rękojmi — odpowiadamy za to przez 2 lata od wydania towaru. Zgłoszenie wyślij na ${ph('kontakt@elfpsotnik.pl')}, opisując wadę i swoje żądanie (naprawa, wymiana, obniżenie ceny lub odstąpienie od umowy). Na rozpatrzenie reklamacji mamy 14 dni.</p>
+    <p>Jeśli produkt jest niezgodny z umową (wada fizyczna lub prawna), możesz złożyć reklamację z tytułu rękojmi — odpowiadamy za to przez 2 lata od wydania towaru. Zgłoszenie wyślij na kontakt@akelements.pl, opisując wadę i swoje żądanie (naprawa, wymiana, obniżenie ceny lub odstąpienie od umowy). Na rozpatrzenie reklamacji mamy 14 dni.</p>
     <h4>Jak zgłosić zwrot lub reklamację</h4>
     <ul>
-      <li>Napisz do nas na ${ph('kontakt@elfpsotnik.pl')}, podając numer zamówienia.</li>
+      <li>Napisz do nas na kontakt@akelements.pl, podając numer zamówienia.</li>
       <li>Opisz, czy chcesz odstąpić od umowy (zwrot) czy zgłaszasz wadę towaru (reklamacja).</li>
       <li>Odezwiemy się z dalszymi instrukcjami, w tym adresem do odesłania towaru.</li>
     </ul>
@@ -1759,12 +1759,12 @@ const LEGAL_DOCS = {
     <h4>5. Prawo odstąpienia od umowy</h4>
     <p>Konsumentowi przysługuje prawo odstąpienia od umowy w terminie 14 dni bez podania przyczyny, zgodnie z ustawą o prawach konsumenta. Szczegóły opisane są w zakładce „Zwroty i reklamacje”.</p>
     <h4>6. Reklamacje</h4>
-    <p>Sprzedawca odpowiada za zgodność towaru z umową na zasadach rękojmi. Reklamacje można składać na adres ${ph('kontakt@elfpsotnik.pl')}. Szczegóły w zakładce „Zwroty i reklamacje”.</p>
+    <p>Sprzedawca odpowiada za zgodność towaru z umową na zasadach rękojmi. Reklamacje można składać na adres kontakt@akelements.pl. Szczegóły w zakładce „Zwroty i reklamacje”.</p>
     <h4>7. Dane osobowe</h4>
     <p>Zasady przetwarzania danych osobowych opisane są w Polityce prywatności.</p>
     <h4>8. Postanowienia końcowe</h4>
     <p>W sprawach nieuregulowanych niniejszym regulaminem zastosowanie mają przepisy prawa polskiego, w szczególności Kodeksu cywilnego i ustawy o prawach konsumenta. Regulamin dostępny jest w każdym czasie na stronie elfpsotnik.pl.</p>
-    <p style="margin-top:16px;font-size:.84rem">Ostatnia aktualizacja: ${ph('[data]')}.</p>
+    <p style="margin-top:16px;font-size:.84rem">Ostatnia aktualizacja: 4 listopada 2026.</p>
   `},
   prywatnosc: { title: 'Polityka prywatności', html: `
     <h4>Administrator danych</h4>
@@ -1781,10 +1781,10 @@ const LEGAL_DOCS = {
     <h4>Okres przechowywania</h4>
     <p>Dane przechowujemy przez czas niezbędny do realizacji zamówienia, a następnie przez okres wymagany przepisami podatkowymi i rachunkowymi (zwykle 5 lat) lub do czasu przedawnienia roszczeń.</p>
     <h4>Twoje prawa</h4>
-    <p>Masz prawo dostępu do swoich danych, ich sprostowania, usunięcia, ograniczenia przetwarzania, przenoszenia danych oraz wniesienia sprzeciwu, a także prawo wniesienia skargi do Prezesa Urzędu Ochrony Danych Osobowych. W tych sprawach napisz na ${ph('kontakt@elfpsotnik.pl')}.</p>
+    <p>Masz prawo dostępu do swoich danych, ich sprostowania, usunięcia, ograniczenia przetwarzania, przenoszenia danych oraz wniesienia sprzeciwu, a także prawo wniesienia skargi do Prezesa Urzędu Ochrony Danych Osobowych. W tych sprawach napisz na kontakt@akelements.pl.</p>
     <h4>Cookies</h4>
     <p>Strona wykorzystuje pliki cookies niezbędne do jej działania (np. zapamiętanie koszyka). Korzystając ze strony, wyrażasz zgodę na ich użycie zgodnie z niniejszą polityką.</p>
-    <p style="margin-top:16px;font-size:.84rem">Ostatnia aktualizacja: ${ph('[data]')}.</p>
+    <p style="margin-top:16px;font-size:.84rem">Ostatnia aktualizacja: 4 listopada 2026.</p>
   `}
 };
 function legalModal(key){
