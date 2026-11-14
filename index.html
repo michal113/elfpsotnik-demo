@@ -1728,7 +1728,17 @@ async function shopifyBuildCheckoutUrl(){
   );
   const res = data && data.cartLinesAdd;
   if(res && res.userErrors && res.userErrors.length) console.error('Shopify cart errors:', res.userErrors);
-  return res && res.cart ? res.cart.checkoutUrl : null;
+  const url = res && res.cart ? res.cart.checkoutUrl : null;
+  return url ? forcePolishLocale(url) : null;
+}
+
+// wymusza checkout po polsku niezaleznie od jezyka przegladarki klienta
+function forcePolishLocale(url){
+  try{
+    const u = new URL(url);
+    u.searchParams.set('locale', 'pl');
+    return u.toString();
+  }catch(e){ return url; }
 }
 
 function openDrawer(open){
