@@ -471,6 +471,18 @@ footer a:hover{color:var(--lamp)}
 .modal__elf{width:86px;height:auto}
 .pays{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:4px}
 .pay{border:1px solid var(--line);border-radius:8px;padding:6px 11px;font-size:.78rem;font-weight:700;color:var(--ink-soft)}
+.modal__box--doc{max-width:720px;text-align:left;align-items:stretch;padding:0;overflow:hidden}
+.doc__head{display:flex;align-items:center;justify-content:space-between;padding:20px 26px;border-bottom:1px solid var(--line)}
+.doc__head h3{font-size:1.2rem;margin:0}
+.doc__close{border:none;background:none;cursor:pointer;color:var(--ink-soft);font-size:1.4rem;line-height:1;padding:4px}
+.doc__close:hover{color:var(--ink)}
+.doc__body{padding:22px 26px 28px;overflow-y:auto;max-height:70vh;font-size:.92rem;line-height:1.6;color:var(--ink-soft)}
+.doc__body h4{color:var(--ink);font-size:1rem;margin:20px 0 6px}
+.doc__body h4:first-child{margin-top:0}
+.doc__body p{margin:0 0 10px}
+.doc__body ul{margin:0 0 10px;padding-left:20px}
+.doc__body li{margin-bottom:4px}
+.doc__placeholder{background:#FFF4D6;color:#6b5a1e;padding:1px 5px;border-radius:4px;font-weight:600}
 
 /* ---------- toast ---------- */
 .toasts{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:120;
@@ -807,7 +819,7 @@ footer a:hover{color:var(--lamp)}
   <section>
     <div class="wrap split">
       <div class="split__art">
-        <img class="art" src="https://cdn.shopify.com/s/files/1/1082/0295/0997/files/4.png?v=1793123796" alt="Elf Psotnik – figurka ze zginanymi rękami i nogami" loading="lazy">
+        <img class="art" src="https://cdn.shopify.com/s/files/1/1082/0295/0997/files/hero-figurka-opt.jpg?v=1793909563" alt="Elf Psotnik – figurka ze zginanymi rękami i nogami" loading="lazy">
       </div>
       <div>
         <p class="eyebrow">Figurka</p>
@@ -1005,13 +1017,13 @@ footer a:hover{color:var(--lamp)}
         <li><a href="#" data-shop-cat="odziez">Odzież</a></li>
       </ul></div>
       <div><h4>Pomoc</h4><ul>
-        <li><a href="#" data-stub>Dostawa i płatność</a></li>
-        <li><a href="#" data-stub>Zwroty i reklamacje</a></li>
-        <li><a href="#" data-stub>Regulamin</a></li>
-        <li><a href="#" data-stub>Polityka prywatności</a></li>
+        <li><a href="#" data-legal="dostawa">Dostawa i płatność</a></li>
+        <li><a href="#" data-legal="zwroty">Zwroty i reklamacje</a></li>
+        <li><a href="#" data-legal="regulamin">Regulamin</a></li>
+        <li><a href="#" data-legal="prywatnosc">Polityka prywatności</a></li>
       </ul></div>
       <div><h4>Kontakt</h4><ul>
-        <li><a href="#" data-stub>kontakt@elfpsotnik.pl</a></li>
+        <li><a href="mailto:kontakt@akelements.pl">kontakt@akelements.pl</a></li>
         <li><a href="https://www.instagram.com/elfpsotnik/" target="_blank" rel="noopener">Instagram @elfpsotnik</a></li>
         <li><a href="#" data-stub>Współpraca</a></li>
       </ul></div>
@@ -1070,75 +1082,148 @@ const CATS = [
 ];
 const SHOPIFY_IMG = 'https://cdn.shopify.com/s/files/1/1082/0295/0997/files/';
 const P = [
-  {id:'elf-psotnik-figurka', cat:'figurki', name:'Elf Psotnik – figurka ze zginanymi rękami i nogami', price:49.99,
-   img:SHOPIFY_IMG+'1.png?v=1793123793', tone:'#8E1B23', bg:'#F5E4E0', badge:'Bestseller', badgeType:'berry',
+  {id:'elf-psotnik-figurka', cat:'figurki', name:'Elf Psotnik – figurka ze zginanymi rękami i nogami', price:39.90,
+   img:SHOPIFY_IMG+'elf-psotnik-figurka-opt.jpg?v=1793909563', tone:'#8E1B23', bg:'#F5E4E0', badge:'Bestseller', badgeType:'berry',
    desc:'Świąteczna figurka z giętkimi drucikami w rękach i nogach — siedzi, stoi, wspina się i daje ustawić w każdej pozycji.',
    dims:'Wysokość ok. 40 cm.',
    full:`<p>Elf Psotnik to świąteczna figurka, która może stać się głównym bohaterem codziennych grudniowych psot. Dzięki drucikom umieszczonym w kończynach ręce i nogi można wyginać i ustawiać w różnych pozycjach, co daje wiele możliwości tworzenia zabawnych scenek.</p><p>Elf może siedzieć, wspinać się po drabince, korzystać z huśtawki, sanek i innych akcesoriów lub każdego ranka pojawiać się w zupełnie nowym miejscu. Figurka ma około 40 cm wysokości i świetnie współgra z całą kolekcją Elf Psotnik.</p><ul><li>wysokość około 40 cm</li><li>zginane ręce i nogi</li><li>druciki umożliwiające ustawianie pozycji</li><li>klasyczny świąteczny strój</li><li>idealny do codziennych psot i scenek</li><li>pasuje do akcesoriów z kolekcji Elf Psotnik</li></ul>`},
 
-  {id:'zestaw-czarodzieja', cat:'zestawy', name:'Zestaw czarodzieja dla Elfa Psotnika', price:49.99,
-   img:SHOPIFY_IMG+'11_54077b01-3aca-44c2-8f4a-e4396a1204bb.png?v=1793124287', tone:'#1F4D3A', bg:'#E6EDE4',
+  {id:'zestaw-czarodzieja', cat:'zestawy', name:'Zestaw czarodzieja dla Elfa Psotnika', price:29.90,
+   img:SHOPIFY_IMG+'zestaw-czarodzieja-opt.jpg?v=1793909563', tone:'#1F4D3A', bg:'#E6EDE4',
    desc:'Czarno-czerwona peleryna z kapturem, pasiasty szalik i miniaturowa miotła — magiczna przemiana elfa w czarodzieja.',
    full:`<p>Zmień Elfa Psotnika w małego czarodzieja i przygotuj zupełnie nową świąteczną przygodę. Zestaw czarodzieja dla elfa składa się z czarno-czerwonej peleryny z kapturem, pasiastego szalika oraz miniaturowej miotły.</p><p>Strój doskonale sprawdzi się podczas przygotowywania zabawnych scenek, magicznych psot oraz zdjęć Elfa Psotnika. To prosty sposób na urozmaicenie codziennej zabawy i stworzenie kolejnej niespodzianki dla dzieci.</p><ul><li>kompletny tematyczny strój dla elfa</li><li>peleryna z kapturem</li><li>pasiasty szalik i miniaturowa miotła</li><li>idealny do magicznych i zabawnych scenek</li><li>świetne uzupełnienie kolekcji akcesoriów Elfa Psotnika</li></ul><p>Zestaw zawiera: pelerynę, szalik i miotłę.</p>`},
 
-  {id:'zestaw-kucharza', cat:'zestawy', name:'Zestaw kucharza dla Elfa Psotnika', price:49.99,
-   img:SHOPIFY_IMG+'19.png?v=1793124263', tone:'#B08B18', bg:'#F7EDD6',
+  {id:'zestaw-kucharza', cat:'zestawy', name:'Zestaw kucharza dla Elfa Psotnika', price:34.90,
+   img:SHOPIFY_IMG+'zestaw-kucharza-opt.jpg?v=1793909564', tone:'#B08B18', bg:'#F7EDD6',
    desc:'Strój kucharza i miniaturowe akcesoria kuchenne — fartuszek, wałek, patelnia, jajka i więcej.',
    full:`<p>Elf Psotnik przejmuje kuchnię! Zestaw kucharza dla elfa pozwala stworzyć zabawną scenkę z gotowaniem, pieczeniem ciasteczek lub przygotowywaniem świątecznego śniadania.</p><p>W zestawie znajduje się strój kucharza oraz wiele miniaturowych akcesoriów kuchennych. Dzięki nim możesz każdego dnia przygotować nową historię i stworzyć efektowną aranżację bez konieczności kompletowania dodatków osobno.</p><ul><li>strój kucharza i miniaturowe akcesoria w jednym zestawie</li><li>idealny do scenek związanych z gotowaniem i pieczeniem</li><li>wiele elementów do kreatywnej zabawy</li><li>świetny pomysł na grudniową psotę</li><li>doskonały dodatek do kącika Elfa Psotnika</li></ul><p>W zestawie m.in.: fartuszek, czapka kucharska, wałek, deska, miseczka, jajka, trzepaczka, patelnia, łopatka i drobne akcesoria.</p>`},
 
-  {id:'kacik-elfa', cat:'zestawy', name:'Zestaw do kącika Elfa Psotnika', price:49.99,
-   img:SHOPIFY_IMG+'4_7c92159d-b789-4e91-946e-be8f1648d723.png?v=1793124347', tone:'#8E1B23', bg:'#F5E4E0',
+  {id:'kacik-elfa', cat:'zestawy', name:'Zestaw do kącika Elfa Psotnika', price:59.90,
+   img:SHOPIFY_IMG+'kacik-elfa-opt.jpg?v=1793909563', tone:'#8E1B23', bg:'#F5E4E0',
    badge:'Najczęściej wybierane', badgeType:'berry',
    desc:'Komplet dekoracji na start: drzwi elfa, drabinka, choinka, buciki, wianek, lampion i więcej miniaturowych dodatków.',
    full:`<p>Stwórz wyjątkowy, miniaturowy kącik Elfa Psotnika, który będzie bazą do codziennych grudniowych psot i świątecznych historii. Zestaw zawiera różnorodne akcesoria, dzięki którym z łatwością przygotujesz efektowną aranżację w pokoju dziecka, na komodzie, półce lub przy choince.</p><p>Drzwi elfa, drabinka, choinka, buciki i pozostałe dodatki pozwalają każdego dnia zmieniać wygląd scenki i wymyślać nowe przygody. To świetny zestaw na rozpoczęcie zabawy z Elfem Psotnikiem oraz uzupełnienie większej kolekcji elfowych akcesoriów.</p><ul><li>kompletny zestaw do stworzenia kącika Elfa Psotnika</li><li>wiele miniaturowych elementów dekoracyjnych</li><li>idealny do codziennych psot i świątecznych scenek</li><li>świetnie prezentuje się na zdjęciach</li><li>możliwość tworzenia wielu różnych aranżacji</li></ul><p>W zestawie m.in.: drzwi elfa, drabinka, choinka, buciki, płotek, okienka, wianek, lampion, laska cukrowa, woreczek, wycieraczka i miotełka.</p>`},
 
-  {id:'zestaw-ognisko', cat:'zestawy', name:'Zestaw ognisko dla Elfa Psotnika', price:49.99,
-   img:SHOPIFY_IMG+'4_53070268-9523-4cfd-bcb1-6ee327a82e1b.png?v=1793124374', tone:'#4E8298', bg:'#E4EDF2',
+  {id:'zestaw-ognisko', cat:'zestawy', name:'Zestaw ognisko dla Elfa Psotnika', price:26.90,
+   img:SHOPIFY_IMG+'zestaw-ognisko-opt.jpg?v=1793909563', tone:'#4E8298', bg:'#E4EDF2',
    desc:'Miniaturowe ognisko, kociołek i stojak-trójnóg na zimowy biwak Elfa Psotnika.',
    full:`<p>Przygotuj Elfowi Psotnikowi prawdziwy zimowy biwak. Miniaturowe ognisko z kociołkiem to wyjątkowy zestaw do tworzenia świątecznych scenek, który świetnie sprawdzi się zarówno samodzielnie, jak i w połączeniu z innymi elfowymi akcesoriami.</p><p>Palenisko, zawieszony kociołek i drewniany stojak tworzą efektowną miniaturę, wokół której możesz zbudować całą historię. Elf może ogrzewać się przy ognisku, przygotowywać posiłek albo urządzić nocny biwak.</p><ul><li>miniaturowy zestaw biwakowy dla Elfa Psotnika</li><li>ognisko i dekoracyjny kociołek</li><li>stojak w formie trójnogu</li><li>idealny do zimowych i świątecznych scenek</li><li>efektowny dodatek do zdjęć i kącika elfa</li></ul><p>Zestaw świetnie komponuje się ze sztucznym śniegiem, choinką, sankami oraz innymi akcesoriami Elfa Psotnika, pozwalając stworzyć rozbudowaną zimową aranżację.</p>`},
 
-  {id:'hustawka-elfa', cat:'akcesoria', name:'Huśtawka dla Elfa Psotnika', price:49.99,
-   img:SHOPIFY_IMG+'2_0e41a479-7d48-42ca-8e4e-73ac7d3eb172.png?v=1793124354', tone:'#1F4D3A', bg:'#E6EDE4',
+  {id:'hustawka-elfa', cat:'akcesoria', name:'Huśtawka dla Elfa Psotnika', price:19.90,
+   img:SHOPIFY_IMG+'hustawka-elfa-opt.jpg?v=1793909563', tone:'#1F4D3A', bg:'#E6EDE4',
    desc:'Drewniane siedzisko, czerwono-biały sznurek i świąteczne pomponiki — do zawieszenia przy półce lub choince.',
    dims:'Siedzisko 8 × 4 cm, sznurek ok. 60 cm.',
    full:`<p>Miniaturowa huśtawka dla Elfa Psotnika to uroczy dodatek do świątecznych scenek i domowego kącika elfa. Drewniane siedzisko, czerwono-biały sznurek oraz kolorowe pomponiki tworzą dekorację idealnie pasującą do bożonarodzeniowego klimatu.</p><p>Huśtawkę możesz zawiesić przy półce, choince, drzwiach elfa lub wykorzystać podczas przygotowywania codziennych psot. Świetnie sprawdzi się również jako rekwizyt do zdjęć.</p><ul><li>dekoracyjna huśtawka dla Elfa Psotnika</li><li>drewniane siedzisko</li><li>czerwono-biały sznurek</li><li>świąteczne czerwone i zielone pomponiki</li><li>idealna do scenek, zdjęć i kącika elfa</li></ul>`},
 
-  {id:'drewniana-drabinka', cat:'akcesoria', name:'Drewniana drabinka dla Elfa Psotnika', price:49.99,
-   img:SHOPIFY_IMG+'2_18204c21-cf5e-4585-8f00-f34dd4390bea.png?v=1793124373', tone:'#8E1B23', bg:'#F5E4E0',
+  {id:'drewniana-drabinka', cat:'akcesoria', name:'Drewniana drabinka dla Elfa Psotnika', price:19.90,
+   img:SHOPIFY_IMG+'drewniana-drabinka-opt.jpg?v=1793909563', tone:'#8E1B23', bg:'#F5E4E0',
    desc:'Drewniane szczebelki na sznurku — scenka ze wspinającym się elfem w dowolnym miejscu w domu.',
    dims:'Długość 90 cm, szerokość 8 cm.',
    full:`<p>Drewniana drabinka dla Elfa Psotnika pozwoli stworzyć scenkę, w której elf wspina się na półkę, komodę, choinkę lub próbuje dostać się do swojego domku. Długość aż 90 cm daje wiele możliwości wykorzystania jej w różnych miejscach w domu.</p><p>Drabinka składa się z drewnianych szczebelków połączonych sznurkiem. Naturalna kolorystyka dobrze komponuje się z innymi akcesoriami Elfa Psotnika i pozwala tworzyć efektowne, pionowe aranżacje.</p><ul><li>długa drabinka dekoracyjna dla elfa</li><li>drewniane szczebelki</li><li>elastyczna konstrukcja na sznurku</li><li>idealna do scenek ze wspinającym się elfem</li><li>pasuje do domku, drzwi i innych akcesoriów Elfa Psotnika</li></ul>`},
 
-  {id:'worek-z-bakami', cat:'akcesoria', name:'Worek z bąkami Elfa Psotnika – Bag of Farts', price:49.99,
-   img:SHOPIFY_IMG+'8.png?v=1793123716', tone:'#B08B18', bg:'#F7EDD6',
+  {id:'worek-z-bakami', cat:'akcesoria', name:'Worek z bąkami Elfa Psotnika – Bag of Farts', price:19.90,
+   img:SHOPIFY_IMG+'worek-z-bakami-opt.jpg?v=1793909563', tone:'#B08B18', bg:'#F7EDD6',
    desc:'Czerwony woreczek, który po naciśnięciu wydaje zabawny dźwięk — gotowy pomysł na prostą psotę.',
    dims:'Wysokość ok. 13,5 cm, szerokość ok. 9,5 cm.',
    full:`<p>Worek z bąkami Elfa Psotnika to zabawny gadżet stworzony z myślą o naprawdę psotnych grudniowych scenkach. Czerwony woreczek z humorystycznym nadrukiem „Bag of Farts” po naciśnięciu wydaje charakterystyczny dźwięk pierdnięcia, który może skutecznie zaskoczyć i rozśmieszyć dzieci.</p><p>Wystarczy ustawić go obok elfa lub wykorzystać jako element większej psoty. To gotowy pomysł na prostą scenkę, która nie wymaga wielu przygotowań, a z pewnością zostanie zapamiętana.</p><ul><li>po naciśnięciu wydaje zabawny dźwięk pierdnięcia</li><li>humorystyczny nadruk „Bag of Farts”</li><li>czerwony świąteczny woreczek</li><li>zamknięcie na sznurek</li><li>idealny do pranków i psot Elfa Psotnika</li></ul>`},
 
-  {id:'sanki-elfa', cat:'akcesoria', name:'Sanki dla Elfa Psotnika', price:49.99,
-   img:SHOPIFY_IMG+'7.png?v=1793123559', tone:'#4E8298', bg:'#E4EDF2',
-   desc:'Czerwone, lakierowane sanki z zagiętymi płozami — zimowa wyprawa elfa po prezenty.',
-   full:`<p>Drewniane sanki dla Elfa Psotnika to klasyczny, świąteczny rekwizyt do codziennych scenek i zdjęć. Czerwone, lakierowane sanki z charakterystycznymi, zagiętymi płozami świetnie sprawdzą się jako element zimowej wyprawy elfa po prezenty.</p><p>Możesz ustawić je pod choinką, przy drzwiach elfa albo załadować miniaturowymi paczkami — to gotowy pomysł na nową psotę każdego grudniowego poranka.</p><ul><li>drewniane sanki w czerwonym kolorze</li><li>klasyczny, zagięty kształt płozów</li><li>sznurek do ciągnięcia</li><li>idealne do zimowych scenek i zdjęć</li><li>pasują do pozostałych akcesoriów z kolekcji Elf Psotnik</li></ul>`},
+  {id:'sanki-elfa', cat:'akcesoria', name:'Sanki dla Elfa Psotnika', price:19.90,
+   img:SHOPIFY_IMG+'sanki-elfa-opt.jpg?v=1793909565', tone:'#4E8298', bg:'#E4EDF2',
+   desc:'Drewniane, czerwone sanki — klasyczny zimowy dodatek do kącika i scenek Elfa Psotnika.',
+   dims:'Sanki 11,5 × 5 cm, wysokość 2 cm. Materiał: drewno.',
+   full:`<p>Drewniane sanki dla Elfa Psotnika to uroczy świąteczny dodatek, dzięki któremu z łatwością przygotujesz zimową scenkę pełną magii i humoru. Klasyczny kształt sanek oraz intensywny czerwony kolor doskonale wpisują się w bożonarodzeniowy klimat i świetnie komponują się z pozostałymi akcesoriami elfa.</p><p>Sanki możesz wykorzystać podczas codziennych grudniowych psot, tworzenia kącika elfa oraz przygotowywania świątecznych zdjęć. W połączeniu ze sztucznym śniegiem, miniaturową choinką czy innymi zimowymi dodatkami pozwalają stworzyć jeszcze bardziej rozbudowaną aranżację.</p><ul><li>drewniana konstrukcja — naturalny, dekoracyjny wygląd</li><li>czerwony, świąteczny kolor</li><li>idealne do zimowych scenek z elfem</li><li>pasują do innych akcesoriów Elfa Psotnika (śnieg, choinka, drabinka, domek elfa)</li><li>świetne do zdjęć i dekoracji kącika elfa</li></ul><p>Elf może wybierać się na przejażdżkę, ciągnąć drobne świąteczne dodatki albo zostać znaleziony rano pośród przygotowanej śnieżnej scenerii — to prosty sposób na urozmaicenie codziennych psot.</p>`},
 
-  {id:'fartuch-i-czapka', cat:'odziez', name:'Świąteczny fartuch i czapka dla Elfa Psotnika', price:49.99,
-   img:SHOPIFY_IMG+'3_2d9f375c-b663-4d02-901f-a43faed0a020.png?v=1793124373', tone:'#1F4D3A', bg:'#E6EDE4',
+  {id:'fartuch-i-czapka', cat:'odziez', name:'Świąteczny fartuch i czapka dla Elfa Psotnika', price:19.90,
+   img:SHOPIFY_IMG+'fartuch-i-czapka-opt.jpg?v=1793909564', tone:'#1F4D3A', bg:'#E6EDE4',
    desc:'Zielono-czerwony fartuszek z kieszonkami i dopasowana czapka z białym pomponem.',
    full:`<p>Ubierz Elfa Psotnika w klasyczny świąteczny strój i przygotuj jego kolejną grudniową przygodę. Zestaw składa się z zielono-czerwonego fartuszka oraz dopasowanej czapki z białym pomponem.</p><p>Fartuszek ozdobiony jest świątecznymi detalami, kieszonkami oraz motywem paska z klamrą. Intensywne kolory sprawiają, że strój świetnie prezentuje się zarówno w kąciku elfa, jak i podczas robienia pamiątkowych zdjęć.</p><ul><li>komplet: fartuch + czapka</li><li>klasyczna zielono-czerwona kolorystyka</li><li>ozdobne kieszonki i pasek</li><li>czapka zakończona białym pomponem</li><li>idealny do świątecznych scenek i codziennych psot</li></ul><p>To szybki sposób na całkowitą zmianę wyglądu Elfa Psotnika i stworzenie nowej niespodzianki dla dzieci.</p>`},
 
-  {id:'bluza-67-biala', cat:'odziez', name:'Biała bluza 67 dla Elfa Psotnika', price:49.99,
-   img:SHOPIFY_IMG+'3_73eb37f1-6de4-496e-9ecd-3ff1055dc4c4.png?v=1793124279', tone:'#4E8298', bg:'#E4EDF2',
+  {id:'bluza-67-biala', cat:'odziez', name:'Biała bluza 67 dla Elfa Psotnika', price:24.90,
+   img:SHOPIFY_IMG+'bluza-67-biala-opt.jpg?v=1793909563', tone:'#4E8298', bg:'#E4EDF2',
    desc:'Biała bluza z kapturem i zielonym nadrukiem „67” — nowoczesna odmiana wyglądu elfa.',
    full:`<p>Modna biała bluza z kapturem dla Elfa Psotnika z charakterystycznym zielonym nadrukiem „67”. To prosty sposób, aby odmienić wygląd elfa i przygotować zabawną, nowoczesną scenkę na kolejny grudniowy poranek.</p><p>Bluza ma długie rękawy, kaptur oraz dekoracyjną kieszeń z przodu. Świetnie sprawdzi się podczas świątecznych psot, zdjęć i aranżacji kącika Elfa Psotnika.</p><ul><li>biała bluza z kapturem</li><li>zielony nadruk „67”</li><li>długie rękawy</li><li>dekoracyjna kieszeń</li><li>idealna do scenek, zdjęć i psot elfa</li></ul>`},
 
-  {id:'bluza-67-czerwona', cat:'odziez', name:'Czerwona bluza 67 dla Elfa Psotnika', price:49.99,
-   img:SHOPIFY_IMG+'9_dae7c914-79b9-459f-bf4f-7ea2c0b57678.png?v=1793124314', tone:'#8E1B23', bg:'#F5E4E0',
+  {id:'bluza-67-czerwona', cat:'odziez', name:'Czerwona bluza 67 dla Elfa Psotnika', price:24.90,
+   img:SHOPIFY_IMG+'bluza-67-czerwona-opt.jpg?v=1793909563', tone:'#8E1B23', bg:'#F5E4E0',
    desc:'Czerwona bluza z kapturem i zielonym nadrukiem „67” w klasycznej bożonarodzeniowej kolorystyce.',
    full:`<p>Czerwona bluza z kapturem dla Elfa Psotnika to zabawny dodatek do świątecznych stylizacji i codziennych psot. Zielony nadruk „67” mocno wyróżnia się na czerwonym tle, a klasyczna bożonarodzeniowa kolorystyka świetnie pasuje do grudniowych aranżacji.</p><p>Bluza posiada długie rękawy, kaptur i kieszeń z przodu. Możesz wykorzystać ją podczas zdjęć, scenek z elfem lub po prostu zaskoczyć dzieci jego nowym wyglądem.</p><ul><li>intensywny czerwony kolor</li><li>zielony nadruk „67”</li><li>kaptur i długie rękawy</li><li>dekoracyjna kieszeń</li><li>idealna do świątecznych scenek Elfa Psotnika</li></ul>`},
 
-  {id:'bluza-67-czarna', cat:'odziez', name:'Czarna bluza 67 dla Elfa Psotnika', price:49.99,
-   img:SHOPIFY_IMG+'15.png?v=1793124331', tone:'#B08B18', bg:'#F7EDD6',
+  {id:'bluza-67-czarna', cat:'odziez', name:'Czarna bluza 67 dla Elfa Psotnika', price:24.90,
+   img:SHOPIFY_IMG+'bluza-67-czarna-opt.jpg?v=1793909563', tone:'#B08B18', bg:'#F7EDD6',
    desc:'Czarna bluza z kapturem i złotym nadrukiem „67” — wyrazista stylizacja na zdjęcia.',
-   full:`<p>Stylowa czarna bluza dla Elfa Psotnika ze złotym nadrukiem „67” pozwoli stworzyć zupełnie nową, bardziej wyrazistą stylizację elfa. Połączenie czerni i złota świetnie prezentuje się na zdjęciach oraz w świątecznych aranżacjach.</p><p>Bluza ma kaptur, długie rękawy i dekoracyjną kieszeń z przodu. To niewielki gadżet, dzięki któremu szybko przygotujesz kolejną psotę lub zabawną scenkę z Elfem Psotnikiem.</p><ul><li>czarna bluza z kapturem</li><li>złoty nadruk „67”</li><li>długie rękawy</li><li>dekoracyjna kieszeń</li><li>efektowny dodatek do zdjęć i grudniowych psot</li></ul>`}
+   full:`<p>Stylowa czarna bluza dla Elfa Psotnika ze złotym nadrukiem „67” pozwoli stworzyć zupełnie nową, bardziej wyrazistą stylizację elfa. Połączenie czerni i złota świetnie prezentuje się na zdjęciach oraz w świątecznych aranżacjach.</p><p>Bluza ma kaptur, długie rękawy i dekoracyjną kieszeń z przodu. To niewielki gadżet, dzięki któremu szybko przygotujesz kolejną psotę lub zabawną scenkę z Elfem Psotnikiem.</p><ul><li>czarna bluza z kapturem</li><li>złoty nadruk „67”</li><li>długie rękawy</li><li>dekoracyjna kieszeń</li><li>efektowny dodatek do zdjęć i grudniowych psot</li></ul>`},
+
+  {id:'elf-psotnik-dziewczynka-figurka-ze-zginanymi-rekami-i-nogami', cat:'figurki', name:'Elf Psotnik dziewczynka – figurka ze zginanymi rękami i nogami', price:39.90,
+   img:SHOPIFY_IMG+'elf-psotnik-dziewczynka-opt.jpg?v=1793909563', tone:'#B23A48', bg:'#F7E3E6', badge:'Nowość',
+   desc:'Druga bohaterka grudniowych przygód — zginane rączki i nóżki, gotowa na kolejne psoty.',
+   dims:'Wysokość ok. 40 cm, szerokość ok. 7 cm.',
+   full:`<p>Elf Psotnik dziewczynka to urocza, ale zdecydowanie nie zawsze grzeczna bohaterka grudniowych przygód. Druciki umieszczone w rączkach i nóżkach pozwalają ustawiać figurkę w różnych pozycjach — może siedzieć, wspinać się, machać albo zostać przyłapana dokładnie tam, gdzie nie powinna się znaleźć.</p><p>Świetnie sprawdzi się samodzielnie albo w duecie z drugim Elfem Psotnikiem i całą kolekcją akcesoriów.</p><ul><li>zginane rączki i nóżki — druciki wewnątrz kończyn</li><li>idealna do codziennych psot i scenek</li><li>klasyczny czerwono-biały świąteczny wygląd</li><li>pasuje do drabinki, huśtawki, sanek i innych akcesoriów</li><li>świetna do zdjęć dzięki możliwości zmiany pozycji</li></ul>`},
+
+  {id:'skrzynka-powitalna-elfa-psotnika-paczka-na-przywitanie', cat:'akcesoria', name:'Skrzynka powitalna Elfa Psotnika – paczka na przywitanie', price:19.90,
+   img:SHOPIFY_IMG+'skrzynka-powitalna-opt.jpg?v=1793909563', tone:'#8B5E34', bg:'#F2E8DC', badge:'Nowość',
+   desc:'Pudełko-niespodzianka na pierwsze pojawienie się elfa — wygląda jak przesyłka z Bieguna Północnego.',
+   dims:'9 × 9 × 9 cm. Materiał: papier, do samodzielnego złożenia.',
+   full:`<p>Paczka powitalna dla Elfa Psotnika to oryginalny sposób na rozpoczęcie świątecznej zabawy. Pudełeczko swoim wyglądem przypomina specjalną przesyłkę wysłaną prosto z Bieguna Północnego, dzięki czemu już od pierwszego dnia buduje atmosferę tajemnicy i oczekiwania.</p><p>Świąteczne nadruki i imitacja drewnianej skrzyni sprawiają, że całość wygląda efektownie i doskonale pasuje do historii o przybyciu elfa.</p><ul><li>idealna na pierwsze pojawienie się Elfa Psotnika</li><li>wygląd specjalnej przesyłki z Bieguna Północnego</li><li>imitacja drewnianej skrzyni</li><li>konstrukcja do samodzielnego złożenia</li><li>świetna do zdjęć i aranżacji kącika elfa</li></ul><p style="font-size:.84rem">❗ Elfa należy wkładać do pudełeczka zaczynając od nóg.</p>`},
+
+  {id:'karta-zdrapka-24-psoty-elfa-psotnika-plan-na-adwent', cat:'akcesoria', name:'Karta zdrapka 24 psoty Elfa Psotnika – plan na adwent', price:19.90,
+   img:SHOPIFY_IMG+'karta-zdrapka-opt.jpg?v=1793909563', tone:'#B08B18', bg:'#F7EDD6', badge:'Nowość',
+   desc:'24 ponumerowane pola do zdrapania — gotowy plan psot na każdy dzień adwentu.',
+   dims:'Format A4 rozłożona / A5 złożona. 24 pola do zdrapania.',
+   full:`<p>Elf już przyjechał, dzieci zachwycone — jest tylko jeden drobny problem: co on ma robić przez kolejne 24 dni? Karta zawiera 24 ponumerowane pola do zdrapania, a pod każdym z nich ukryta jest kolejna świąteczna psota lub zadanie. Wystarczy codziennie odkryć jedno pole.</p><p>Koniec z wieczornym szukaniem inspiracji — to gotowy plan na cały grudzień.</p><ul><li>24 gotowe psoty i zadania na cały adwent</li><li>forma zdrapki — niespodzianka na każdy dzień</li><li>proste zasady: zdrap, przeczytaj, wykonaj razem z elfem</li><li>format A4 rozłożona, A5 po złożeniu — poręczna do przechowywania</li><li>24 dni wspólnej zabawy i świątecznych wspomnień</li></ul>`},
+
+  {id:'kostki-lodu-z-pajakami-dla-elfa-psotnika-prank-2-szt', cat:'akcesoria', name:'Kostki lodu z pająkami dla Elfa Psotnika – prank 2 szt.', price:19.90,
+   img:SHOPIFY_IMG+'kostki-lodu-opt.jpg?v=1793909563', tone:'#355C7D', bg:'#E3EAF0', badge:'Nowość',
+   desc:'Sztuczne kostki lodu z zatopionym pająkiem w środku — prank do szklanki z wodą. Zestaw 2 szt.',
+   dims:'Rozmiar kostki: 3 × 3 cm. To nie jest prawdziwy lód.',
+   full:`<p>Wyglądają jak zwykłe kostki lodu — problem zaczyna się, gdy ktoś zauważy, że w środku siedzi czarny pająk. Elf Psotnik oczywiście nic o tym nie wie. Przezroczysta forma przypomina prawdziwy lód, a zatopione pająki gwarantują efekt „chwila... co to jest?!”.</p><p>W zestawie 2 kostki — wystarczy wrzucić je do szklanki z wodą.</p><ul><li>zestaw 2 sztuk</li><li>sztuczne pająki zatopione w kostkach</li><li>wygląd przypominający prawdziwy lód</li><li>gotowy pomysł na prank Elfa Psotnika</li></ul><p style="font-size:.84rem">⚠️ Produkt dekoracyjny, nieprzeznaczony do spożycia.</p>`},
+
+  {id:'sniezny-puch-sztuczny-snieg-20-g-do-kacika-elfa-psotnika', cat:'akcesoria', name:'Śnieżny puch – sztuczny śnieg 20 g do kącika Elfa Psotnika', price:12.90,
+   img:SHOPIFY_IMG+'sniezny-puch-opt.jpg?v=1793909564', tone:'#4E8298', bg:'#E4EDF2', badge:'Nowość',
+   desc:'Biały, puszysty sztuczny śnieg — zimowa sceneria dla kącika elfa w jednej paczuszce.',
+   dims:'Masa netto 20 g. Kolor biały.',
+   full:`<p>Śnieżny puch to prosty sposób na stworzenie zimowej scenerii w kąciku Elfa Psotnika. Biały, puszysty materiał pozwala uzyskać efekt śnieżnej powierzchni wokół elfa, jego domku, drabinki, sanek czy pozostałych akcesoriów.</p><p>Jedna paczuszka zawiera 20 g — wystarczy do niewielkich świątecznych scenek i zdjęć.</p><ul><li>efekt zimowego puchu wokół Elfa Psotnika</li><li>idealny do miniaturowych aranżacji</li><li>poręczne opakowanie 20 g</li><li>uniwersalny biały kolor</li></ul><p style="font-size:.84rem">⚠️ Wyrób nie jest zabawką. Trzymać z dala od ognia.</p>`},
+
+  {id:'sztuczne-glizdy-dla-elfa-psotnika-prank-2-szt', cat:'akcesoria', name:'Sztuczne glizdy dla Elfa Psotnika – prank 2 szt.', price:19.90,
+   img:SHOPIFY_IMG+'sztuczne-glizdy-opt.jpg?v=1793909563', tone:'#6B4423', bg:'#EDE3D6', badge:'Nowość',
+   desc:'Dwie bardzo realistyczne sztuczne glizdy — gotowy prank do grudniowych psot.',
+   dims:'Rozmiar jednej glizdy: 17 × 0,7 cm. Zestaw 2 szt.',
+   full:`<p>Coś długiego, brązowego i zdecydowanie podejrzanego właśnie pojawiło się obok Elfa Psotnika. Dwie sztuczne glizdy wyglądają na tyle realistycznie, że przez chwilę można naprawdę zastanawiać się, skąd się tam wzięły. A elf? Jak zwykle niewinny.</p><p>Giętka forma pozwala układać je na stole, przy talerzu, w pudełku — na różne, coraz bardziej absurdalne sposoby.</p><ul><li>zestaw 2 sztuk</li><li>realistyczny wygląd i segmentowana powierzchnia</li><li>długa, giętka forma</li><li>gotowy pomysł na prank Elfa Psotnika</li></ul><p style="font-size:.84rem">⚠️ Produkt nieprzeznaczony do spożycia.</p>`},
+
+  {id:'sztuczna-kupa-dla-elfa-psotnika-gumowy-gadzet-do-psot', cat:'akcesoria', name:'Sztuczna kupa dla Elfa Psotnika – gumowy gadżet do psot', price:19.90,
+   img:SHOPIFY_IMG+'sztuczna-kupa-opt.jpg?v=1793909563', tone:'#7A5C3E', bg:'#EFE6D8', badge:'Nowość',
+   desc:'Realistyczny gumowy gadżet-prank — gotowa psota, wystarczy dobrze ją ustawić.',
+   dims:'Ok. 4,5 × 4,5 cm. Materiał: guma.',
+   full:`<p>Sztuczna kupa dla Elfa Psotnika to zabawny i mocno psotny gadżet, który idealnie pasuje do charakteru niesfornego świątecznego elfa. Realistyczny kształt i kolor sprawiają, że na pierwszy rzut oka dekoracja może naprawdę zaskoczyć domowników.</p><p>Wystarczy położyć ją obok elfa, przy choince albo w innym nieoczekiwanym miejscu. Gumowa forma pozwala wykorzystywać gadżet wielokrotnie.</p><ul><li>realistyczny wygląd i kolor</li><li>gumowy materiał — wielokrotnego użytku</li><li>gotowy pomysł na grudniowy żart</li><li>niewielki rozmiar, pasuje do miniaturowych scenek</li></ul>`},
+
+  {id:'sztuczny-palec-uciety-dla-elfa-psotnika-prank', cat:'akcesoria', name:'Sztuczny palec ucięty dla Elfa Psotnika – prank z krwią', price:19.90,
+   img:'https://cdn.shopify.com/s/files/1/1082/0295/0997/files/sztuczny-palec-01.webp?v=1794567900', tone:'#8E1B23', bg:'#F5E4E0', badge:'Nowość',
+   desc:'Realistyczny sztuczny odcięty palec z efektem krwi — gotowa, mocno zaskakująca scenka.',
+   dims:'Zawartość: 1 × sztuczny odcięty palec.',
+   full:`<p>Spokojnie – wszystkie palce są na swoim miejscu. Przynajmniej tak twierdzi Elf Psotnik. Sztuczny odcięty palec z efektem krwi to mocno zaskakujący gadżet, który pozwala przygotować kolejną absurdalną grudniową scenkę bez skomplikowanych przygotowań. Realistyczna forma i ciemnoczerwone wykończenie przy „odciętej” części sprawiają, że na pierwszy rzut oka można naprawdę mieć kilka pytań.</p><p>Wystarczy umieścić palec obok elfa, w jego dłoniach albo w innym strategicznym miejscu i poczekać na reakcję.</p><ul><li>efekt odciętego palca – realistyczna forma</li><li>imitacja krwi – wzmacnia efekt humorystycznego pranku</li><li>gotowy pomysł na psotę</li><li>świetny do zdjęć i aranżacji</li><li>wielokrotne wykorzystanie</li></ul>`},
+
+  {id:'sztuczne-wymiociny-elfa-kolorowe-rzygi-smieszny-gadzet-do-psot', cat:'akcesoria', name:'Sztuczne wymiociny elfa – kolorowe rzygi, śmieszny gadżet do psot', price:19.90,
+   img:'https://cdn.shopify.com/s/files/1/1082/0295/0997/files/2f445dfa81d1a116e56114c9c763e34f.jpg?v=1794567988', tone:'#4C6B3F', bg:'#E8EDE2', badge:'Nowość',
+   desc:'Kolorowe sztuczne wymiociny — podejrzana „pamiątka” po nocnych wybrykach elfa.',
+   dims:'Szerokość 6,5 cm, długość 9 cm.',
+   full:`<p>Kolorowe sztuczne wymiociny to gotowy przepis na jedną z tych psot, po których Elf Psotnik powinien bardzo szybko przygotować dobre alibi. Przezroczysta, nieregularna forma z kolorowymi elementami wygląda jak wyjątkowo podejrzana pamiątka po nocnych elfowych wybrykach.</p><p>Wystarczy położyć gadżet obok figurki, przy stole, na podłodze albo w innym strategicznym miejscu, aby stworzyć scenkę, która natychmiast przyciągnie uwagę. A elf? Oczywiście nic nie jadł, niczego nie ruszał i absolutnie nie wie, skąd to się tam wzięło.</p><ul><li>gotowy pomysł na psotę</li><li>kolorowy, efektowny wygląd</li><li>idealne do zabaw z Elfem Psotnikiem</li><li>niewielki rozmiar</li><li>świetne do zdjęć i pranków</li></ul>`},
+
+  {id:'sztuczne-muchy-i-pajaki-15szt-prank-dla-elfa-psotnika', cat:'akcesoria', name:'Sztuczne muchy i pająki 15szt – prank dla Elfa Psotnika', price:19.90,
+   img:'https://cdn.shopify.com/s/files/1/1082/0295/0997/files/7fbde2e9a9454ed4f49338a7c63d7a66.jpg?v=1794567998', tone:'#3B3B3B', bg:'#E9E9E4', badge:'Nowość',
+   desc:'Zestaw 15 sztucznych much i pająków — błyskawiczna, lekko obrzydliwa inwazja u Elfa Psotnika.',
+   dims:'15 × sztuczna mucha / pająk (mix w zestawie).',
+   full:`<p>Coś chodzi po stole. Coś siedzi przy kubku. Coś podejrzanie wystaje spod talerza. A Elf Psotnik? Oczywiście kompletnie zaskoczony sytuacją. Zestaw 15 sztucznych much i pająków to gotowy sposób na przygotowanie szybkiej, zabawnej i lekko obrzydliwej psoty bez budowania skomplikowanej scenografii.</p><p>Rozłóż owady przy elfie, na stole, obok jedzenia, przy prezentach albo w innym miejscu, w którym absolutnie nikt się ich nie spodziewa. Im bardziej przypadkowo wyglądają, tym lepiej — w końcu 15 owadów to już nie przypadek, to pełnoprawna elfowa inwazja.</p><ul><li>zestaw 15 sztuk – muchy i pająki w jednym komplecie</li><li>gotowy pomysł na prank</li><li>idealne do psot Elfa Psotnika</li><li>wielokrotne wykorzystanie</li></ul><p style="font-size:.84rem">⚠️ Produkt dekoracyjny, nieprzeznaczony do spożycia.</p>`},
+
+  {id:'sztuczny-ketchup-fejk-keczup-prank-dla-elfa-psotnika', cat:'akcesoria', name:'Sztuczny ketchup – fejk keczup, prank dla Elfa Psotnika', price:19.90,
+   img:'https://cdn.shopify.com/s/files/1/1082/0295/0997/files/31ac6be8fdb141274f0e246dd2f00267.jpg?v=1794568010', tone:'#8E1B23', bg:'#F5E4E0', badge:'Nowość',
+   desc:'Saszetka z imitacją rozlanego keczupu — zabawna „katastrofa” przy stole.',
+   dims:'Wysokość ok. 10,5 cm, szerokość ok. 5 cm.',
+   full:`<p>Wygląda jak mała saszetka keczupu, ale z jedzeniem ma niewiele wspólnego. Za to z Elfem Psotnikiem – zdecydowanie więcej. Sztuczny ketchup to prosty gadżet do przygotowania zabawnej scenki, w której coś najwyraźniej poszło bardzo, bardzo nie tak.</p><p>Czerwona imitacja rozlanego keczupu wystająca z opakowania pozwala stworzyć efekt, jakby elf właśnie urządził małą katastrofę przy stole. Połóż gadżet obok figurki, na blacie, przy talerzu albo w innym podejrzanym miejscu.</p><ul><li>efekt rozlanego keczupu</li><li>gotowy pomysł na prank</li><li>idealny do psot Elfa Psotnika</li><li>niewielki rozmiar</li></ul><p style="font-size:.84rem">⚠️ Produkt jest gadżetem dekoracyjnym i nie jest przeznaczony do spożycia.</p>`},
+
+  {id:'przebita-noga-elfa-bandaz-z-gwozdziem-prank-dla-elfa-psotnika', cat:'akcesoria', name:'Przebita noga elfa – bandaż z gwoździem, prank dla Elfa Psotnika', price:19.90,
+   img:'https://cdn.shopify.com/s/files/1/1082/0295/0997/files/cb7430d2e04ef743ba98aff80e388a87.jpg?v=1794568020', tone:'#8E1B23', bg:'#F5E4E0', badge:'Nowość',
+   desc:'Zakrwawiony bandaż z atrapą gwoździa — nakładka na nogę elfa do teatralnych psot.',
+   dims:'Długość bandaża ok. 4 cm, długość elementu z gwoździem ok. 6,5 cm.',
+   full:`<p>Elf Psotnik chyba znowu przecenił swoje umiejętności majsterkowania. Zakrwawiony bandaż z atrapą gwoździa tworzy zabawny efekt, jakby elf właśnie zaliczył wyjątkowo pechowy wypadek. W rzeczywistości gwóźdź jest elementem nakładki i nie przebija nogi – całość została zaprojektowana jako gadżet do żartów i scenek.</p><p>Wystarczy założyć bandaż na nogę elfa, odpowiednio ustawić figurkę i gotowe: poranne „CO MU SIĘ STAŁO?!” praktycznie gwarantowane.</p><ul><li>efekt gwoździa przebijającego bandaż</li><li>zakrwawiony wygląd bandaża</li><li>bez faktycznego przebijania nogi – gwóźdź to element dekoracyjnej nakładki</li><li>gotowy pomysł na prank</li><li>idealny do zdjęć i świątecznych scenek</li></ul>`}
 ];
 const byId = id => P.find(p=>p.id===id);
 const catName = id => (CATS.find(c=>c.id===id)||{}).name || '';
@@ -1153,7 +1238,197 @@ const PRANKS = [
   {t:'Kolorowe skarpetki', m:'3 min', d:'W szufladzie każda skarpetka ma nową parę. Żadna nie pasuje. Elf uważa to za zabawne.', i:'szuflada ze skarpetkami'},
   {t:'Selfie z cudzego telefonu', m:'2 min', d:'W galerii telefonu pojawia się dwanaście rozmazanych zdjęć elfa z bardzo bliska.', i:'telefon, 30 sekund'},
   {t:'Banany z minami', m:'4 min', d:'Każdy banan w koszyku dostał elfią buzię. Śniadanie już nigdy nie będzie takie samo.', i:'banany, cienki flamaster'},
-  {t:'Zjazd po poręczy', m:'3 min', d:'Elf zjeżdża po poręczy schodów na dwóch łyżeczkach zamiast nart.', i:'2 łyżeczki, taśma dwustronna'}
+  {t:'Zjazd po poręczy', m:'3 min', d:'Elf zjeżdża po poręczy schodów na dwóch łyżeczkach zamiast nart.', i:'2 łyżeczki, taśma dwustronna'},
+  {t:'Awantura w słoiku z cukierkami', m:'3 min', d:'Każdy cukierek dostał papierowe zawiniątko z morałem. Elf zostawił jeden rozwinięty — swój ulubiony.', i:'cukierki, bibułka, flamaster'},
+  {t:'Omlet z buźką', m:'4 min', d:'Na patelni czeka omlet uformowany w uśmiechniętą twarz elfa, z kawałkami papryki jako oczy.', i:'jajka, papryka, patelnia'},
+  {t:'Mleko w kolorze świąt', m:'2 min', d:'Karton mleka w lodówce nabrał czerwonego odcienia — od spodu widać malutką etykietkę „barwnik elfa”.', i:'barwnik spożywczy, karton mleka'},
+  {t:'Armia piernikowych ludków', m:'6 min', d:'Na blacie ustawił się cały oddział piernikowych figurek, a na czele stoi elf z wykałaczką jak z mieczem.', i:'ciasteczka, wykałaczka'},
+  {t:'Lodówkowe oczka', m:'3 min', d:'Na każdym jogurcie i słoiku w lodówce przyklejone są ruchliwe oczka. Śniadanie patrzy na Was.', i:'oczka samoprzylepne'},
+  {t:'Tost ze śladem zębów', m:'1 min', d:'Kromka chleba na talerzu ma wygryziony kształt gwiazdki, a obok karteczka: „pierwszy, kto wstał, przegrywa”.', i:'chleb, nożyk'},
+  {t:'Bakaliowa plaża', m:'4 min', d:'Na talerzu rozsypane płatki owsiane układają się w plażę, a elf leży na niej na rodzynkowym leżaku.', i:'płatki owsiane, rodzynki'},
+  {t:'Tajny przepis', m:'2 min', d:'W szafce z przyprawami leży zwitek papieru z „przepisem na psotę”, podpisanym łapką elfa.', i:'papier, długopis'},
+  {t:'Galaretkowe bajoro', m:'5 min', d:'W misce czeka galaretka, a elf na pół zatopiony macha ręką, jakby wołał o pomoc.', i:'galaretka, miska'},
+  {t:'Ciasteczkowy alarm', m:'3 min', d:'Puste miejsce w słoiku na ciastka, okruszki prowadzące do elfa, i karteczka „to nie ja… może”.', i:'słoik, okruszki'},
+  {t:'Sos pomidorowy na rękach', m:'2 min', d:'Na blacie leżą dwa małe czerwone odciski dłoni elfa, obok kubek z resztką sosu.', i:'sos pomidorowy, wacik'},
+  {t:'Lodowa ślizgawka na talerzu', m:'4 min', d:'Elf zjeżdża po odwróconym talerzu posypanym cukrem pudrem jak po sztucznym lodzie.', i:'cukier puder, talerz'},
+  {t:'Owocowa karuzela', m:'3 min', d:'Z plastikowych widelców i kawałka jabłka powstała mini karuzela, a na niej jeździ elf.', i:'widelce plastikowe, jabłko'},
+  {t:'Puszka fasolek żelkowych', m:'2 min', d:'Otwarta paczka żelków, a w środku — odciski malutkich stópek prowadzące na zewnątrz.', i:'żelki'},
+  {t:'Czekoladowy wulkan', m:'5 min', d:'Na talerzu usypany jest kopiec z kakao, z którego „wybucha” roztopiona czekolada, a elf stoi z boku z łyżką jak z tarczą.', i:'kakao, czekolada, łyżka'},
+  {t:'Śniadaniowy komiks', m:'4 min', d:'Z kawałków papieru i rysunków elf zbudował mini-komiks przyklejony do pudełka płatków.', i:'papier, taśma, flamaster'},
+  {t:'Kawowa plama w kształcie serca', m:'2 min', d:'Na blacie widać ślad od filiżanki w kształcie serca, a przy nim liścik „to nie przypadek”.', i:'kawa, filiżanka'},
+  {t:'Pierniki na randce', m:'3 min', d:'Dwa piernikowe ludziki siedzą naprzeciw siebie przy świeczce z cukierka, a elf robi im zdjęcie łyżeczką.', i:'pierniki, cukierek-świeczka'},
+  {t:'Zupa z literek', m:'3 min', d:'W misce z zupą literki ułożyły się w słowo „psota”, a elf chowa się za solniczką.', i:'zupa z literkami'},
+  {t:'Tajna skrytka w maśle orzechowym', m:'2 min', d:'W słoiku masła orzechowego wyryty jest mały napis „cześć” — elf nie mógł się powstrzymać.', i:'masło orzechowe, łyżeczka'},
+  {t:'Mumia z papieru toaletowego', m:'5 min', d:'Cała deska klozetowa i kran owinięte są papierem toaletowym, a elf siedzi na szczycie jak faraon.', i:'papier toaletowy'},
+  {t:'Napis na zaparowanym lustrze', m:'1 min', d:'Po gorącym prysznicu na lustrze wyłania się napis „dzień dobry” i uśmiechnięta buźka elfa.', i:'para wodna'},
+  {t:'Rybki w wannie', m:'3 min', d:'Plastikowe rybki pływają w wannie, a elf siedzi na brzegu z wędką zrobioną z wacika.', i:'zabawki-rybki, wacik, nitka'},
+  {t:'Pasta do zębów w tęczowych kolorach', m:'2 min', d:'Na szczoteczkach do zębów czekają małe kropki barwnika — pasta wypłynie w kolorach choinki.', i:'barwnik spożywczy, szczoteczki'},
+  {t:'Piana jak śnieg', m:'4 min', d:'Na umywalce usypana jest górka z pianki do golenia, a elf robi w niej „aniołka”.', i:'pianka do golenia'},
+  {t:'Kaczuszki na posterunku', m:'3 min', d:'Gumowe kaczuszki stoją w rządku na brzegu wanny jak żołnierze, a elf robi im przegląd.', i:'gumowe kaczuszki'},
+  {t:'Spa dla elfa', m:'3 min', d:'W małym kubku moczą się dwie „nóżki” elfa między plastrami cytryny, jak w prawdziwym spa.', i:'kubek, plastry cytryny'},
+  {t:'Ręcznikowy labirynt', m:'4 min', d:'Ręczniki ułożone na podłodze tworzą labirynt prowadzący do elfa siedzącego na brzegu umywalki.', i:'ręczniki'},
+  {t:'Mydlana ślizgawka', m:'3 min', d:'Kostka mydła zamieniła się w tor saneczkowy, a elf zjeżdża z niej na wacikowych sankach.', i:'mydło, waciki'},
+  {t:'Nocny gość w koszu na pranie', m:'2 min', d:'W koszu na pranie, między skarpetkami, śpi elf owinięty w ręcznik jak w śpiworze.', i:'kosz na pranie, ręcznik'},
+  {t:'Lusterkowe przesłanie z pomadki', m:'2 min', d:'Na lustrze zostaje odbitka ust — czerwoną kredką elf narysował „całuska od Mikołaja”.', i:'czerwona kredka'},
+  {t:'Papierowe łódeczki', m:'4 min', d:'W umywalce pływają papierowe łódeczki, a na jednej z nich stoi mały kapitan-elf.', i:'papier, woda'},
+  {t:'Szampon zamieniony w farbę', m:'1 min', d:'Na butelce szamponu wisi etykietka „ostrzeżenie: może zmienić Cię w elfa”.', i:'papier, taśma'},
+  {t:'Zastawiona pułapka z nitki', m:'3 min', d:'Cienka czerwono-zielona nitka rozciągnięta jest w poprzek drzwi łazienki — niewidzialna pajęczyna elfa.', i:'nitka, taśma'},
+  {t:'Toaletowy teleskop', m:'2 min', d:'Z rolki po papierze toaletowym powstała luneta, przez którą elf „obserwuje” poranne zamieszanie.', i:'rolka papieru'},
+  {t:'Szczoteczkowy chór', m:'2 min', d:'Wszystkie szczoteczki do zębów ustawione są w rządku, jakby śpiewały kolędę razem z elfem.', i:'szczoteczki do zębów'},
+  {t:'Bańki mydlane na suficie', m:'3 min', d:'Kilka baniek mydlanych narysowanych na folii zawisło na suficie łazienki, a elf macha do nich z kranu.', i:'folia, flamaster, taśma'},
+  {t:'Lustrzane ogłoszenie', m:'1 min', d:'Na lustrze przyklejona karteczka: „Zaginął jeden skarpet. Nagroda: ciastko”.', i:'papier, taśma'},
+  {t:'Wata cukrowa z pianki', m:'3 min', d:'Z pianki do golenia uformowany jest słup przypominający watę cukrową, a elf obok z widelcem.', i:'pianka do golenia, widelec plastikowy'},
+  {t:'Zjazd z suszarki', m:'4 min', d:'Elf zjeżdża z uchwytu suszarki do rąk na sznurku, lądując bezpiecznie na stosie ręczników.', i:'sznurek, ręcznik'},
+  {t:'Parasolowy spadochron', m:'4 min', d:'Elf zwisa z żyrandola na chusteczce zawiązanej jak spadochron, trzymając się nitki.', i:'chusteczka, nitka, taśma'},
+  {t:'Armia żołnierzyków na straży', m:'3 min', d:'Plastikowi żołnierzyki otaczają elfa kołem, jakby pilnowali go przez całą noc.', i:'figurki-żołnierzyki'},
+  {t:'Fort z poduszek i latarek', m:'5 min', d:'Pod kocem rozświetlonym latarką stoi twierdza z poduszek, a w środku śpi elf z książką.', i:'poduszki, koc, latarka'},
+  {t:'Domino na starcie', m:'3 min', d:'Długi wąż z kości domina czeka na pierwszy klik, a elf stoi z palcem gotowym do strzału.', i:'kości domino'},
+  {t:'Choinkowa winda', m:'4 min', d:'Mała winda z pudełka zapałek wisi na nitce między półkami, a elf w niej „jedzie” na górę.', i:'pudełko, nitka'},
+  {t:'Gra w chowanego z misiami', m:'3 min', d:'Pluszaki poukrywane są po całym pokoju, a elf trzyma listę z odhaczonymi imionami.', i:'pluszaki, papier'},
+  {t:'Telewizyjne zapowiedzi', m:'2 min', d:'Na ekranie telewizora przyklejona jest karteczka „Dziś wieczorem: Psoty Elfa, o 20:00”.', i:'papier, taśma'},
+  {t:'Klocki w nocnej budowie', m:'6 min', d:'Z klocków lego powstała nocą cała wieża, a elf siedzi na szczycie jak na tronie.', i:'klocki'},
+  {t:'Puzzle do połowy', m:'4 min', d:'Puzzle leżą w połowie ułożone, a brakujący element trzyma w rączkach elf, chowając się za sofą.', i:'puzzle'},
+  {t:'Dywanowe anioły', m:'3 min', d:'Na dywanie widać odciski „aniołków” zrobione w talku, a pośrodku stoi elf z rozłożonymi rękami.', i:'talk, dywan'},
+  {t:'Zdalne sterowanie w rękach elfa', m:'2 min', d:'Elf siedzi na pilocie od telewizora, jakby właśnie zmienił kanał na swój program.', i:'pilot'},
+  {t:'Samochodowy wyścig', m:'4 min', d:'Autka na zdalne sterowanie ustawione są na linii startu, a elf trzyma chorągiewkę z papieru.', i:'autka, papier'},
+  {t:'Girlanda ze skarpetek', m:'3 min', d:'Pod sufitem rozwieszona jest girlanda z małych skarpetek, a elf kołysze się na jednej z nich.', i:'skarpetki, sznurek'},
+  {t:'Fotel-tron', m:'2 min', d:'Fotel w salonie ozdobiony jest papierową koroną i poduszkami — tron elfa na jedną noc.', i:'papier, poduszki'},
+  {t:'Karciana wieża', m:'5 min', d:'Z kart do gry zbudowana jest krucha wieża, a elf na szczycie balansuje jak akrobata.', i:'karty do gry'},
+  {t:'Zabawkowy tor saneczkowy', m:'4 min', d:'Z książek powstała rampa, z której elf zjeżdża na pokrywce od pudełka jak na sankach.', i:'książki, pokrywka'},
+  {t:'Nocna dyskoteka pluszaków', m:'3 min', d:'Pluszaki ustawione są w kółko wokół małej lampki, a elf w środku z gałązką jak mikrofonem.', i:'pluszaki, lampka'},
+  {t:'Zasłonowa zjeżdżalnia', m:'3 min', d:'Elf zjeżdża po brzegu zasłony prosto na stos miękkich poduszek.', i:'poduszki'},
+  {t:'Gazeta z elfimi wiadomościami', m:'4 min', d:'Na stoliku leży „gazeta” z nagłówkiem „Elf Psotnik znowu w akcji!” i małym rysunkiem.', i:'papier, flamaster'},
+  {t:'Lampa disco z folii', m:'3 min', d:'Mała latarka owinięta kolorową folią rzuca na ścianę świąteczne światła, a elf tańczy w ich blasku.', i:'latarka, folia kolorowa'},
+  {t:'Śpiwór z rękawiczki', m:'2 min', d:'Elf śpi w rękawiczce jak w śpiworze, z główką wystawioną na poduszce z chusteczki.', i:'rękawiczka, chusteczka'},
+  {t:'Wiadomość pod poduszką', m:'1 min', d:'Pod poduszką czeka karteczka z jednym pytaniem: „Co dziś wymyślimy razem?”.', i:'papier, długopis'},
+  {t:'Zasłona z gwiazdek', m:'4 min', d:'Na suficie nad łóżkiem zawisły wycięte z papieru gwiazdki, a wśród nich elf na sznurku.', i:'papier, nitka, taśma'},
+  {t:'Budzik przestawiony na psotę', m:'2 min', d:'Budzik pokazuje „czas na psoty” zamiast godziny, a obok stoi uśmiechnięty elf.', i:'budzik, papier'},
+  {t:'Camping pod kołdrą', m:'3 min', d:'Z latarki i małego kocyka powstał mini-biwak, a elf siedzi przy „ognisku” z czerwonej bibułki.', i:'latarka, bibułka, kocyk'},
+  {t:'Nocny alpinista', m:'4 min', d:'Elf wspina się po firance na sznurku z haczykiem, jakby zdobywał szczyt.', i:'sznurek, mała klamerka'},
+  {t:'Skarpetkowe sanki', m:'3 min', d:'Elf siedzi w skarpetce zawieszonej na klamce jak w saneczkach, gotowy na start.', i:'skarpetka'},
+  {t:'Książkowy zamek', m:'5 min', d:'Z książek na półce zbudowany jest zamek, a elf stoi na wieży z proporczykiem z wykałaczki.', i:'książki, wykałaczka, papier'},
+  {t:'Latające samolociki', m:'3 min', d:'Kilka papierowych samolotów zawisło na nitkach nad łóżkiem, a elf prowadzi je jak kontroler lotów.', i:'papier, nitka'},
+  {t:'Lampka w czapce mikołaja', m:'2 min', d:'Mała lampka nocna ma na górze mini czapeczkę mikołajkową zrobioną z filcu.', i:'filc, nożyczki'},
+  {t:'Poduszkowy bałwan', m:'4 min', d:'Z trzech poduszek różnej wielkości powstał bałwan, a elf trzyma w łapkach guzik zamiast nosa.', i:'poduszki, guzik'},
+  {t:'Sekretny tunel pod kołdrą', m:'3 min', d:'Kołdra uformowana jest w tunel prowadzący do pluszaka, a przy wejściu elf z latarką stoi na straży.', i:'kołdra, latarka'},
+  {t:'Zegar z opóźnieniem', m:'2 min', d:'Na budziku wisi karteczka: „jeszcze 5 minut psoty” — elf próbuje przedłużyć noc.', i:'papier'},
+  {t:'Firanka-huśtawka', m:'3 min', d:'Mała huśtawka z nitki i spinacza zawieszona jest na karniszu, a elf na niej się kołysze.', i:'nitka, spinacz'},
+  {t:'Nocna lektura na głowę', m:'2 min', d:'Mała książeczka stoi otwarta „do góry nogami” na nocnej szafce — elf uczy się czytać po swojemu.', i:'książeczka'},
+  {t:'Zasypana poduszkami fortereca', m:'4 min', d:'Łóżko otoczone jest wałem z poduszek, a elf pilnuje go z wykałaczką jak z lancą.', i:'poduszki, wykałaczka'},
+  {t:'Gwiazdkowy sufit', m:'3 min', d:'Naklejone fluorescencyjne gwiazdki układają się w kształt elfa patrzącego w dół z sufitu.', i:'naklejki fluorescencyjne'},
+  {t:'Śpiący strażnik zabawek', m:'2 min', d:'Elf śpi oparty o rząd ustawionych zabawek, jakby całą noc ich pilnował.', i:'zabawki'},
+  {t:'Opaska na czoło ze wstążki', m:'1 min', d:'Elf ma zawiązaną na czole małą wstążkę, jakby właśnie wrócił z nocnego treningu.', i:'wstążka'},
+  {t:'Poranny alarm confetti', m:'2 min', d:'W szufladzie nocnej czeka niewielka garstka confetti — otwarcie szuflady zamienia się w mini fajerwerk.', i:'confetti'},
+  {t:'Mączna zamieć', m:'4 min', d:'Blat kuchenny przykryty jest cienką warstwą mąki, a na niej odciski małych stóp i sanek.', i:'mąka'},
+  {t:'Aniołek na śniegu z cukru', m:'3 min', d:'Na talerzu usypanym cukrem pudrem widać odbity kształt aniołka — elf robi przerwę od psot.', i:'cukier puder'},
+  {t:'Bitwa śnieżkami z waty', m:'4 min', d:'Kuleczki z waty kosmetycznej leżą rozsypane po całym stole — pole bitwy po nocnej wojnie śnieżkami.', i:'wata kosmetyczna'},
+  {t:'Bałwan z ryżu', m:'5 min', d:'Trzy kulki z ryżu ułożone jedna na drugiej tworzą małego bałwana z guzikami z groszku.', i:'ryż, groszek'},
+  {t:'Szron na oknie', m:'2 min', d:'Na szybie narysowany jest szron-wzór, a w rogu podpis: „pozdrowienia z Bieguna, Elf”.', i:'biała kredka'},
+  {t:'Mini sanki z pokrywki', m:'3 min', d:'Na pokrywce od pudełka elf zjeżdża z górki zrobionej z książek, lądując w stercie waty.', i:'pokrywka, książki, wata'},
+  {t:'Zaspa w doniczce', m:'3 min', d:'Doniczka z kwiatkiem przykryta jest watą jak śniegiem, a na szczycie stoi mała chorągiewka.', i:'wata, wykałaczka'},
+  {t:'Śnieżny anioł na ręczniku', m:'2 min', d:'Na złożonym białym ręczniku widać odcisk aniołka, zrobiony talkiem dla śnieżnego efektu.', i:'talk, ręcznik'},
+  {t:'Lodowa karuzela', m:'4 min', d:'Kostki lodu w miseczce krążą wokół malutkiego elfa, jak w zamarzniętej karuzeli.', i:'kostki lodu, miseczka'},
+  {t:'Sanki z opakowania', m:'3 min', d:'Z pudełka po zapałkach i dwóch słomek powstały miniaturowe sanki, którymi jedzie elf.', i:'pudełko, słomki'},
+  {t:'Śnieżna bitwa na schodach', m:'4 min', d:'Kulki z papieru toaletowego rozsypane są na schodach, a na szczycie czeka elf z „tarczą” z tektury.', i:'papier toaletowy, tektura'},
+  {t:'Zimowy piknik', m:'5 min', d:'Na serwetce rozłożony jest miniaturowy piknik — herbatniki, odrobina dżemu i elf z kubeczkiem po naparstku.', i:'herbatniki, dżem, naparstek'},
+  {t:'Płatki śniegu z papieru', m:'4 min', d:'Wycięte z papieru płatki śniegu zawisły na nitkach nad stołem, a wśród nich lata elf na sznurku.', i:'papier, nitka'},
+  {t:'Zjazd na łyżwach z korków', m:'3 min', d:'Elf „jeździ na łyżwach” zrobionych z dwóch korków po winie, po gładkiej desce do krojenia.', i:'korki, deska'},
+  {t:'Zaspa w umywalce', m:'3 min', d:'Umywalka pełna piany udaje zaspę śniegową, w której elf robi nurkowanie na główkę.', i:'pianka do kąpieli'},
+  {t:'Mroźny napis szronem z soli', m:'2 min', d:'Na czarnym talerzu solą wypisane jest „Wesołych Świąt” — niby szron, tylko smaczniejszy.', i:'sól, czarny talerz'},
+  {t:'Igloo z kostek cukru', m:'6 min', d:'Małe igloo zbudowane z kostek cukru stoi na spodku, a elf zagląda przez „wejście”.', i:'kostki cukru'},
+  {t:'Śnieżkowy pojedynek zabawek', m:'3 min', d:'Dwa pluszaki stoją po przeciwnych stronach stołu z kulkami z waty w łapkach, a elf jest sędzią.', i:'wata, pluszaki'},
+  {t:'Zamrożony elf', m:'2 min', d:'Elf stoi w zamrażarce między mrożonkami, z karteczką: „chwila wytchnienia od grzania się przy kominku”.', i:'papier'},
+  {t:'Sople z makaronu', m:'4 min', d:'Z makaronu spaghetti zrobione są „sople”, zwisające z krawędzi szafki, a pod nimi stoi zdumiony elf.', i:'makaron spaghetti, taśma'},
+  {t:'Puzzle-portret elfa', m:'5 min', d:'Z puzzli ułożony jest mały portret samego elfa, który dumnie stoi tuż przy nim.', i:'puzzle'},
+  {t:'Wyścigi kredkowe', m:'3 min', d:'Kredki ułożone są na starcie jak zawodnicy, a elf trzyma gumkę jak flagę startową.', i:'kredki, gumka'},
+  {t:'Szachownica psot', m:'4 min', d:'Na szachownicy zamiast figur stoją małe cukierki, a elf gra przeciwko ulubionemu misiowi.', i:'szachownica, cukierki'},
+  {t:'Klockowa huśtawka', m:'4 min', d:'Z klocków i linijki zbudowana jest huśtawka, na której balansuje elf.', i:'klocki, linijka'},
+  {t:'Kostka do gry na szczycie wieży', m:'3 min', d:'Na szczycie wieży z klocków leży kostka do gry pokazująca szóstkę — szczęśliwy numer elfa.', i:'klocki, kostka do gry'},
+  {t:'Bitwa klockami lego', m:'5 min', d:'Dwie armie z klocków lego stoją po przeciwnych stronach stołu, a elf macha białą chusteczką o rozejm.', i:'klocki lego, chusteczka'},
+  {t:'Mini kręgle z kredek', m:'3 min', d:'Kredki ustawione jak kręgle czekają na kulkę z papieru, a elf trzyma wynik na karteczce.', i:'kredki, papier'},
+  {t:'Samochodzik-sanki', m:'3 min', d:'Zabawkowy samochodzik ciągnie na sznurku malutkie sanki z elfem, zaparkowany na środku pokoju.', i:'samochodzik, sznurek'},
+  {t:'Gra w memory z karteczkami', m:'4 min', d:'Rozłożone karteczki z narysowanymi symbolami czekają w rządkach — elf już zdążył znaleźć jedną parę.', i:'papier, flamaster'},
+  {t:'Balonowa piłka nożna', m:'4 min', d:'Mały balon leży na „boisku” narysowanym kredą na podłodze, a dwa klocki udają bramki.', i:'balon, kreda'},
+  {t:'Figurkowy pochód', m:'3 min', d:'Figurki z szafki ustawione są w pochód za elfem, jakby brały udział w paradzie.', i:'figurki'},
+  {t:'Turniej warcabów', m:'4 min', d:'Warcaby rozstawione są w połowie partii, a elf siedzi po jednej stronie planszy z miną pewnego wygranej.', i:'warcaby'},
+  {t:'Latawiec z chusteczki', m:'3 min', d:'Mały latawiec z chusteczki i dwóch słomek wisi pod sufitem, a elf trzyma nitkę.', i:'chusteczka, słomki, nitka'},
+  {t:'Tor przeszkód z klamerek', m:'4 min', d:'Drewniane klamerki do bielizny ustawione są jak przeszkody, przez które przeskakuje elf.', i:'klamerki do bielizny'},
+  {t:'Rybaczki na sznurku', m:'3 min', d:'Z magnesu i sznurka powstała mini wędka, którą elf „łowi” papierowe rybki rozłożone na podłodze.', i:'magnes, sznurek, papier'},
+  {t:'Walka w karty', m:'3 min', d:'Karty do gry leżą rozłożone na stole w połowie partii, a elf trzyma asa schowanego za plecami.', i:'karty do gry'},
+  {t:'Spadający domek z kart', m:'4 min', d:'Domek z kart stoi nienaruszony tuż przy elfie, który z dumą udaje, że właśnie go zbudował.', i:'karty do gry'},
+  {t:'Katapulta z łyżki', m:'3 min', d:'Z łyżki i gumki recepturki powstała mała katapulta do strzelania pomponami przez pokój.', i:'łyżka, gumka recepturka, pompony'},
+  {t:'Zabawkowy cyrk', m:'5 min', d:'Pluszaki ustawione są w kółko jak na arenie cyrkowej, a elf balansuje na sznurku rozciągniętym między dwoma krzesłami.', i:'pluszaki, sznurek'},
+  {t:'Konkurs rzutów skarpetką', m:'2 min', d:'Zrolowana skarpetka leży przy koszu na pranie — elf właśnie trenował rzuty do kosza.', i:'skarpetka'},
+  {t:'List z Bieguna Północnego', m:'2 min', d:'Na stole czeka mała koperta zaadresowana do całej rodziny, zapieczętowana odciskiem łapki elfa.', i:'papier, koperta'},
+  {t:'Autoportret kredkami', m:'4 min', d:'Na kartce leży niedokończony rysunek elfa — widać, że próbował narysować sam siebie i trochę się pogubił.', i:'kredki, papier'},
+  {t:'Origami reniferek', m:'5 min', d:'Z papieru złożony jest mały renifer origami, który stoi obok elfa jak jego nowy kumpel.', i:'papier do origami'},
+  {t:'Tajny alfabet elfów', m:'4 min', d:'Na kartce zapisany jest tajny szyfr — klucz do odczytania kolejnej wiadomości od elfa.', i:'papier, długopis'},
+  {t:'Malowanie palcami na szybie', m:'3 min', d:'Na zaparowanej od zimna szybie namalowany jest uśmiechnięty bałwanek — podpis w rogu: E.P.', i:'szyba'},
+  {t:'Girlanda z papierowych ludków', m:'5 min', d:'Wycięty z papieru łańcuch ludzików-elfów wisi na półce, a prawdziwy elf stoi z nożyczkami w ręku.', i:'papier, nożyczki'},
+  {t:'Pocztówka z psotą', m:'2 min', d:'Mała pocztówka opisuje w kilku słowach psotę, którą elf planuje na kolejną noc — ale nie całą.', i:'papier, długopis'},
+  {t:'Stempel łapki', m:'1 min', d:'Na kartce papieru odbity jest mały stempel w kształcie łapki elfa, obok napis „byłem tu”.', i:'stempel, tusz'},
+  {t:'Papierowa korona', m:'3 min', d:'Z paska papieru powstała mała korona, którą elf właśnie przymierza przed lustrem.', i:'papier, taśma'},
+  {t:'Sekretny notes', m:'2 min', d:'Mały notes z liczbą dni do świąt leży otwarty — elf codziennie odhacza kolejny.', i:'papier, długopis'},
+  {t:'Serduszkowy kolaż', m:'4 min', d:'Z wycinanek powstał kolaż serc i gwiazdek, a na środku przyklejone zdjęcie całej rodziny.', i:'papier kolorowy, klej'},
+  {t:'Zakładka do książki', m:'2 min', d:'Mała papierowa zakładka z narysowanym elfem czeka w ulubionej książce dziecka.', i:'papier, kredki'},
+  {t:'Odciski dłoni na kartce', m:'3 min', d:'Na kartce odbite są małe farbowe odciski — elf próbował zrobić własny obrazek na pamiątkę.', i:'farba, papier'},
+  {t:'List do świętego Mikołaja', m:'2 min', d:'Na stole leży zalakowana koperta — elf właśnie wysłał raport z całego miesiąca psot.', i:'papier, koperta, lak'},
+  {t:'Konfetti-niespodzianka w książce', m:'2 min', d:'Między stronami ulubionej książki wsunięte jest confetti — otwarcie zamienia się w małą fajerwerkę.', i:'confetti'},
+  {t:'Papierowa łamigłówka', m:'4 min', d:'Pocięta na kawałki kartka czeka na poskładanie — po złożeniu ukazuje się wskazówka do kolejnej psoty.', i:'papier, nożyczki'},
+  {t:'Malowanie na mące', m:'3 min', d:'Na tacy z mąką narysowany jest prosty wzór świąteczny, a przy nim mała łapka-pędzelek.', i:'mąka, tacka'},
+  {t:'Pajęczyna z włóczki', m:'4 min', d:'Między nogami krzesła rozciągnięta jest kolorowa pajęczyna z włóczki, a elf wisi na niej jak pająk.', i:'włóczka'},
+  {t:'Album z psotami', m:'5 min', d:'Mały album z odręcznie narysowanymi scenkami z minionych nocy leży otwarty na pierwszej stronie.', i:'papier, klej, kredki'},
+  {t:'Naklejkowa inwazja', m:'2 min', d:'Małe naklejki gwiazdek rozsypane są po całym stole, a elf stoi pośrodku z rolką w ręku.', i:'naklejki'},
+  {t:'Bombki zamienione miejscami', m:'4 min', d:'Wszystkie bombki na choince zawisły do góry nogami, a elf dyndał z najwyższej gałązki.', i:'bombki'},
+  {t:'Lampki w nowym wzorze', m:'3 min', d:'Lampki na choince mrugają w rytmie, który elf sam „zaprogramował” w nocy.', i:'lampki choinkowe'},
+  {t:'Łańcuch z cukierków', m:'4 min', d:'Zamiast zwykłego łańcucha na choince wisi girlanda z zawiniątek po cukierkach, a elf próbuje jeden otworzyć.', i:'cukierki, nitka'},
+  {t:'Gwiazda na krzywo', m:'2 min', d:'Gwiazda na szczycie choinki jest przekrzywiona, a elf wisi obok, trzymając się jej jedną ręką.', i:'-'},
+  {t:'Prezentowa pułapka', m:'3 min', d:'Na jednym z prezentów pod choinką leży karteczka: „Otwórz mnie ostatni — Elf”.', i:'papier'},
+  {t:'Choinkowa winda z koszyczka', m:'4 min', d:'Mały koszyczek na nitce wisi między gałęziami choinki jak winda, którą jeździ elf.', i:'koszyczek, nitka'},
+  {t:'Elf jako ozdoba', m:'2 min', d:'Elf wisi wśród bombek na choince, idealnie wtopiony w ozdoby — trzeba się dobrze przyjrzeć, by go znaleźć.', i:'-'},
+  {t:'Girlanda z popcornu', m:'4 min', d:'Nitka z nawleczonym popcornem owija dolne gałęzie choinki, a elf podjada po drodze.', i:'popcorn, nitka, igła'},
+  {t:'Adwentowa niespodzianka', m:'2 min', d:'W kalendarzu adwentowym jedno okienko jest już otwarte przed czasem — elf nie mógł się powstrzymać.', i:'kalendarz adwentowy'},
+  {t:'Choinkowe sztuczne ognie', m:'3 min', d:'Z kolorowej bibułki powstały „fajerwerki” rozłożone u podstawy choinki, a elf macha nad nimi różdżką z wykałaczki.', i:'bibułka, wykałaczka'},
+  {t:'Prezentowa wymiana etykietek', m:'3 min', d:'Etykietki na kilku prezentach pod choinką zostały zamienione miejscami — elf uwielbia takie zamieszanie.', i:'papier, sznurek'},
+  {t:'Ozdoby z masy solnej', m:'5 min', d:'Mała ozdoba z masy solnej w kształcie odcisku łapki elfa suszy się na parapecie.', i:'masa solna'},
+  {t:'Wieniec na drzwiach do góry nogami', m:'2 min', d:'Świąteczny wieniec na drzwiach wisi odwrócony, a przy nim mała karteczka „zabawa w górę nogami”.', i:'papier'},
+  {t:'Figurki szopki na wakacjach', m:'3 min', d:'Figurki z szopki bożonarodzeniowej ustawione są jakby robiły sobie przerwę na kawę przy kominku.', i:'figurki szopki'},
+  {t:'Skarpety na kominku z przesłaniem', m:'2 min', d:'W jednej ze skarpet na kominku chowa się mała karteczka z żartem od elfa.', i:'skarpety, papier'},
+  {t:'Dzwoneczkowa pułapka', m:'3 min', d:'Przy wejściu do salonu zawieszony jest cichy dzwoneczek, który zadzwoni, gdy ktoś pierwszy wejdzie rano.', i:'dzwoneczek, nitka'},
+  {t:'Choinka z papierowych łańcuchów elfów', m:'5 min', d:'Z papieru wycięty jest łańcuch małych elfów trzymających się za ręce, zawieszony na gałęzi.', i:'papier, nożyczki'},
+  {t:'Bałwankowa rodzinka na oknie', m:'3 min', d:'Na szybie przyklejone są watki w kształcie trzech bałwanów różnej wielkości — cała rodzina.', i:'wata, taśma'},
+  {t:'Zaginiona bombka', m:'2 min', d:'Jedna bombka zniknęła z choinki i leży owinięta w szalik elfa na parapecie — na pewno jej zimno.', i:'bombka, skrawek materiału'},
+  {t:'Reniferowy zaprzęg z klocków', m:'4 min', d:'Z klocków i nitek powstał mini zaprzęg reniferów, a elf siedzi na saniach z dumną miną.', i:'klocki, nitka'},
+  {t:'Ręce w dżemie', m:'2 min', d:'Elf stoi przy słoiku dżemu z czerwonymi od owoców łapkami i miną niewiniątka.', i:'dżem'},
+  {t:'Cukierkowa kradzież', m:'2 min', d:'Puste papierki po cukierkach leżą rozsypane wokół elfa, który udaje, że śpi.', i:'papierki po cukierkach'},
+  {t:'Nocna wyprawa do słoika z miodem', m:'3 min', d:'Łyżka oparta o słoik miodu, a elf obok z lepkimi od miodu łapkami.', i:'miód, łyżka'},
+  {t:'Rozsypane confetti po balu', m:'3 min', d:'Podłoga usypana jest confetti, a elf leży pośrodku, wyczerpany po całonocnej zabawie.', i:'confetti'},
+  {t:'Otwarta puszka z farbkami', m:'4 min', d:'Farby wodne stoją otwarte, a na kartce widać nieudolny, kolorowy bazgroł elfa.', i:'farby, papier'},
+  {t:'Elf złapany na podsłuchu', m:'2 min', d:'Elf stoi przyklejony uchem do drzwi pokoju, jakby właśnie podsłuchał plany na święta.', i:'-'},
+  {t:'Resztki tortu na talerzu', m:'2 min', d:'Na talerzu zostały tylko okruszki i jedna świeczka, a elf trzyma widelec jak trofeum.', i:'okruszki, świeczka'},
+  {t:'Śpiący po balandze', m:'1 min', d:'Elf leży w nienaturalnej pozie między zabawkami, jakby zaspał po całonocnej zabawie.', i:'-'},
+  {t:'Otwarta szuflada ze słodyczami', m:'2 min', d:'Szuflada ze słodyczami jest odrobinę otwarta, a tuż przy niej leży jeden rozwinięty papierek.', i:'cukierki'},
+  {t:'Malowana twarz od czekolady', m:'1 min', d:'Elf ma małe czekoladowe wąsy namalowane, jakby właśnie skosztował czegoś zabronionego.', i:'czekolada'},
+  {t:'Zgubiony but w akwarium', m:'3 min', d:'Jeden bucik elfa pływa w misce z wodą, podczas gdy on sam siedzi obok w skarpetce.', i:'miska z wodą'},
+  {t:'Powalone klocki po zabawie', m:'3 min', d:'Wieża z klocków jest zburzona, a elf leży tuż pod nią z wyciągniętą ręką jak po wybuchu.', i:'klocki'},
+  {t:'Ukryty w torcie urodzinowym', m:'4 min', d:'Elf wyłania się z pudełka tortu, cały oblepiony kremem, z widelczykiem w łapce.', i:'bita śmietana'},
+  {t:'Ślad po nocnej imprezie', m:'3 min', d:'Serpentyny i balonik leżą porzucone w kącie, a elf drzemie wyczerpany na stosie confetti.', i:'serpentyny, balonik'},
+  {t:'Zapas ciastek skrócony o jedno', m:'1 min', d:'W pudełku ciastek brakuje jednego, a tuż przy nim leżą okruszki prowadzące do elfa.', i:'ciastka'},
+  {t:'Elf w roli detektywa', m:'2 min', d:'Elf stoi z lupą zrobioną z pierścionka od zabawki, badając „zagadkę” zniknięcia ciastka.', i:'pierścionek-zabawka'},
+  {t:'Poplamiony fartuszek', m:'2 min', d:'Mały fartuszek elfa ma na sobie plamy mąki i czekolady — ślady nocnego pieczenia.', i:'mąka, czekolada'},
+  {t:'Zaklejone usta plastrem', m:'1 min', d:'Elf ma usta zaklejone małym plastrem z karteczką: „nic nie powiem o psocie”.', i:'plaster'},
+  {t:'Ukradkowe zdjęcie z aparatu', m:'2 min', d:'Na ekranie aparatu widać przypadkowe, rozmazane zdjęcie elfa z bardzo bliska.', i:'aparat, telefon'},
+  {t:'Zwiady przed świętami', m:'2 min', d:'Elf stoi na parapecie z lornetką z dwóch rolek po papierze, obserwując, czy nie idzie Mikołaj.', i:'rolki po papierze'},
+  {t:'Mini maraton po stole', m:'3 min', d:'Z taśmy wyznaczona jest trasa biegu po stole, a elf stoi na mecie z medalem z kapsla.', i:'taśma, kapsel'},
+  {t:'Trening na siłowni z klamerek', m:'3 min', d:'Elf „podnosi” dwie klamerki do bielizny związane sznurkiem jak hantle.', i:'klamerki, sznurek'},
+  {t:'Balonowa dyskoteka', m:'3 min', d:'Kilka balonów kołysze się nad podłogą, a elf tańczy pośrodku z confetti w powietrzu.', i:'balony, confetti'},
+  {t:'Zjazd na desce do krojenia', m:'3 min', d:'Elf zjeżdża z deski do krojenia opartej o książki, jak z narciarskiej skoczni.', i:'deska, książki'},
+  {t:'Mecz piłkarzyków z korków', m:'4 min', d:'Korki od butelek ustawione są jak zawodnicy na boisku narysowanym na kartce.', i:'korki, papier'},
+  {t:'Łyżwiarska rewia na tacy', m:'3 min', d:'Elf „jeździ” po oliwionej tacy, jakby to było lodowisko, a widzami są dwa pluszaki.', i:'tacka, odrobina oliwy'},
+  {t:'Wspinaczka na regał', m:'4 min', d:'Elf wisi w połowie regału na sznurku, jak podczas górskiej wspinaczki, z małą flagą na szczycie.', i:'sznurek, papier'},
+  {t:'Turniej strzałek z wacików', m:'3 min', d:'Waciki rzucane są do narysowanej na kartce tarczy, a elf trzyma wynik na liczniku z papieru.', i:'waciki, papier'},
+  {t:'Noworoczne confetti przed czasem', m:'2 min', d:'Elf stoi gotowy do odliczania z confetti w rękach, chociaż do Nowego Roku zostało jeszcze trochę.', i:'confetti'},
+  {t:'Uroczyste zakończenie zmiany', m:'1 min', d:'Elf siedzi z filiżanką po naparstku, podnosząc toast za udaną noc psot.', i:'naparstek'}
 ];
 
 /* ---------------- art helpers ---------------- */
@@ -1459,7 +1734,17 @@ async function shopifyBuildCheckoutUrl(){
   );
   const res = data && data.cartLinesAdd;
   if(res && res.userErrors && res.userErrors.length) console.error('Shopify cart errors:', res.userErrors);
-  return res && res.cart ? res.cart.checkoutUrl : null;
+  const url = res && res.cart ? res.cart.checkoutUrl : null;
+  return url ? forcePolishLocale(url) : null;
+}
+
+// wymusza checkout po polsku niezaleznie od jezyka przegladarki klienta
+function forcePolishLocale(url){
+  try{
+    const u = new URL(url);
+    u.searchParams.set('locale', 'pl');
+    return u.toString();
+  }catch(e){ return url; }
 }
 
 function openDrawer(open){
@@ -1476,6 +1761,89 @@ function toast(msg){
   t.className='toast'; t.textContent = msg;
   $('#toasts').appendChild(t);
   setTimeout(()=>t.remove(), 2600);
+}
+function ph(txt){ return `<span class="doc__placeholder">${txt}</span>`; }
+const LEGAL_SELLER = `AK Elements Agnieszka Krawczyńska, Gnieździska 191, 26-070 Łopuszno, NIP 9591648506, e-mail kontakt@akelements.pl`;
+const LEGAL_DOCS = {
+  dostawa: { title: 'Dostawa i płatność', html: `
+    <h4>Czas realizacji</h4>
+    <p>Zamówienia składane do godz. 14:00 w dni robocze wysyłamy w ciągu 24 godzin. W okresie przedświątecznym prosimy o złożenie zamówienia do 20 grudnia, aby paczka dotarła przed Wigilią — po tym terminie nie gwarantujemy dostawy przed świętami.</p>
+    <h4>Koszty i sposoby dostawy (Polska)</h4>
+    <ul>
+      <li>Paczkomaty InPost — 15 zł</li>
+      <li>Kurier InPost — 18 zł</li>
+      <li>Kurier DPD — 19 zł</li>
+      <li>Darmowa dostawa przy zamówieniu od 200 zł (dowolny z powyższych sposobów)</li>
+    </ul>
+    <p>Obecnie wysyłamy wyłącznie na terytorium Polski.</p>
+    <h4>Płatność</h4>
+    <p>Płatność następuje online, z góry, bezpośrednio po złożeniu zamówienia (BLIK, karta płatnicza, przelew online). Realizację zamówienia zaczynamy po potwierdzeniu płatności.</p>
+  `},
+  zwroty: { title: 'Zwroty i reklamacje', html: `
+    <h4>Odstąpienie od umowy (14 dni)</h4>
+    <p>Jako konsument masz prawo odstąpić od umowy bez podania przyczyny w terminie 14 dni od otrzymania przesyłki. Wystarczy przesłać nam jednoznaczne oświadczenie o odstąpieniu (np. e-mailem na kontakt@akelements.pl lub pisemnie) przed upływem tego terminu.</p>
+    <p>Zwracany towar należy odesłać niezwłocznie, nie później niż 14 dni od dnia złożenia oświadczenia o odstąpieniu, na adres: AK Elements Agnieszka Krawczyńska, Gnieździska 191, 26-070 Łopuszno. Koszt odesłania towaru pokrywa kupujący.</p>
+    <p>Pieniądze (w tym koszt dostawy do klienta) zwracamy w ciągu 14 dni od otrzymania oświadczenia, przy czym możemy wstrzymać się ze zwrotem do otrzymania towaru lub potwierdzenia jego odesłania. Zwrot następuje tym samym sposobem płatności, jakim zapłacono — chyba że wyraźnie zgodzono się na inny sposób.</p>
+    <h4>Reklamacje (rękojmia)</h4>
+    <p>Jeśli produkt jest niezgodny z umową (wada fizyczna lub prawna), możesz złożyć reklamację z tytułu rękojmi — odpowiadamy za to przez 2 lata od wydania towaru. Zgłoszenie wyślij na kontakt@akelements.pl, opisując wadę i swoje żądanie (naprawa, wymiana, obniżenie ceny lub odstąpienie od umowy). Na rozpatrzenie reklamacji mamy 14 dni.</p>
+    <h4>Jak zgłosić zwrot lub reklamację</h4>
+    <ul>
+      <li>Napisz do nas na kontakt@akelements.pl, podając numer zamówienia.</li>
+      <li>Opisz, czy chcesz odstąpić od umowy (zwrot) czy zgłaszasz wadę towaru (reklamacja).</li>
+      <li>Odezwiemy się z dalszymi instrukcjami, w tym adresem do odesłania towaru.</li>
+    </ul>
+  `},
+  regulamin: { title: 'Regulamin sklepu', html: `
+    <h4>1. Postanowienia ogólne</h4>
+    <p>Sklep internetowy elfpsotnik.pl prowadzony jest przez: ${LEGAL_SELLER}. Regulamin określa zasady korzystania ze sklepu, składania zamówień, płatności, dostawy oraz odstąpienia od umowy i reklamacji.</p>
+    <h4>2. Zamówienia</h4>
+    <p>Zamówienia można składać przez stronę elfpsotnik.pl 24 godziny na dobę. Złożenie zamówienia wymaga akceptacji regulaminu oraz dokonania płatności online. Umowa sprzedaży zostaje zawarta w momencie potwierdzenia przyjęcia zamówienia przez sprzedawcę.</p>
+    <h4>3. Ceny i płatność</h4>
+    <p>Ceny podane na stronie są cenami brutto, wyrażonymi w złotych polskich i nie zawierają kosztów dostawy, które są wskazywane odrębnie przed złożeniem zamówienia. Płatność realizowana jest online z góry.</p>
+    <h4>4. Dostawa</h4>
+    <p>Zasady i koszty dostawy opisane są w zakładce „Dostawa i płatność”. Towar wysyłany jest wyłącznie na terytorium Polski.</p>
+    <h4>5. Prawo odstąpienia od umowy</h4>
+    <p>Konsumentowi przysługuje prawo odstąpienia od umowy w terminie 14 dni bez podania przyczyny, zgodnie z ustawą o prawach konsumenta. Szczegóły opisane są w zakładce „Zwroty i reklamacje”.</p>
+    <h4>6. Reklamacje</h4>
+    <p>Sprzedawca odpowiada za zgodność towaru z umową na zasadach rękojmi. Reklamacje można składać na adres kontakt@akelements.pl. Szczegóły w zakładce „Zwroty i reklamacje”.</p>
+    <h4>7. Dane osobowe</h4>
+    <p>Zasady przetwarzania danych osobowych opisane są w Polityce prywatności.</p>
+    <h4>8. Postanowienia końcowe</h4>
+    <p>W sprawach nieuregulowanych niniejszym regulaminem zastosowanie mają przepisy prawa polskiego, w szczególności Kodeksu cywilnego i ustawy o prawach konsumenta. Regulamin dostępny jest w każdym czasie na stronie elfpsotnik.pl.</p>
+    <p style="margin-top:16px;font-size:.84rem">Ostatnia aktualizacja: 4 listopada 2026.</p>
+  `},
+  prywatnosc: { title: 'Polityka prywatności', html: `
+    <h4>Administrator danych</h4>
+    <p>Administratorem danych osobowych zbieranych przez sklep elfpsotnik.pl jest: ${LEGAL_SELLER}.</p>
+    <h4>Jakie dane zbieramy i w jakim celu</h4>
+    <ul>
+      <li>Dane podane przy zamówieniu (imię i nazwisko, adres dostawy, e-mail, telefon) — w celu realizacji i rozliczenia zamówienia oraz kontaktu w sprawie dostawy.</li>
+      <li>Dane niezbędne do rozpatrzenia zwrotów i reklamacji.</li>
+      <li>Dane podane w rozmowie z chatbotem / formularzu kontaktowym — w celu udzielenia odpowiedzi.</li>
+    </ul>
+    <p>Podstawą przetwarzania jest wykonanie umowy (art. 6 ust. 1 lit. b RODO), a w zakresie kontaktu — prawnie uzasadniony interes administratora (art. 6 ust. 1 lit. f RODO).</p>
+    <h4>Komu przekazujemy dane</h4>
+    <p>Dane mogą być przekazywane podmiotom niezbędnym do realizacji zamówienia: operatorowi platformy sklepowej (Shopify), firmom kurierskim i operatorom punktów odbioru (InPost, DPD) oraz dostawcy płatności online.</p>
+    <h4>Okres przechowywania</h4>
+    <p>Dane przechowujemy przez czas niezbędny do realizacji zamówienia, a następnie przez okres wymagany przepisami podatkowymi i rachunkowymi (zwykle 5 lat) lub do czasu przedawnienia roszczeń.</p>
+    <h4>Twoje prawa</h4>
+    <p>Masz prawo dostępu do swoich danych, ich sprostowania, usunięcia, ograniczenia przetwarzania, przenoszenia danych oraz wniesienia sprzeciwu, a także prawo wniesienia skargi do Prezesa Urzędu Ochrony Danych Osobowych. W tych sprawach napisz na kontakt@akelements.pl.</p>
+    <h4>Cookies</h4>
+    <p>Strona wykorzystuje pliki cookies niezbędne do jej działania (np. zapamiętanie koszyka). Korzystając ze strony, wyrażasz zgodę na ich użycie zgodnie z niniejszą polityką.</p>
+    <p style="margin-top:16px;font-size:.84rem">Ostatnia aktualizacja: 4 listopada 2026.</p>
+  `}
+};
+function legalModal(key){
+  const doc = LEGAL_DOCS[key];
+  if(!doc) return;
+  const m = document.createElement('div');
+  m.className='modal';
+  m.innerHTML = `<div class="modal__box modal__box--doc" role="dialog" aria-modal="true" aria-label="${esc(doc.title)}">
+    <div class="doc__head"><h3>${esc(doc.title)}</h3><button class="doc__close" data-close-modal aria-label="Zamknij">×</button></div>
+    <div class="doc__body">${doc.html}</div>
+  </div>`;
+  document.body.appendChild(m);
+  m.addEventListener('click', e=>{ if(e.target===m || e.target.closest('[data-close-modal]')) m.remove(); });
 }
 async function checkoutModal(){
   const btn = $('#checkout');
@@ -1776,6 +2144,21 @@ setTimeout(()=>{ if(!bot.open) $('#botTeaser').hidden = false;
   setTimeout(()=>{ const t=$('#botTeaser'); if(t) t.hidden = true; }, 10000);
 }, 6000);
 
+/* Psotek jest głównym elementem strony — otwiera się sam po kawałku scrolla, jednorazowo na wizytę */
+(function(){
+  let triggered = false;
+  function maybeAutoOpenBot(){
+    if(triggered || bot.open) return;
+    const threshold = Math.min(500, window.innerHeight * 0.5);
+    if(window.scrollY > threshold){
+      triggered = true;
+      window.removeEventListener('scroll', maybeAutoOpenBot);
+      botOpen();
+    }
+  }
+  window.addEventListener('scroll', maybeAutoOpenBot, {passive:true});
+})();
+
 /* ---------------- global events ---------------- */
 document.addEventListener('click', e=>{
   const t = e.target;
@@ -1856,6 +2239,8 @@ document.addEventListener('click', e=>{
     const n = $('#navlinks'); const open = n.dataset.open==='true';
     n.dataset.open = String(!open); $('#burger').setAttribute('aria-expanded', String(!open)); return;
   }
+  const legal = t.closest('[data-legal]');
+  if(legal){ e.preventDefault(); legalModal(legal.dataset.legal); return; }
   const stub = t.closest('[data-stub]');
   if(stub){ e.preventDefault(); toast('To tylko podgląd wersji demo'); return; }
 });
