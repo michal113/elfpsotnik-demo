@@ -351,6 +351,10 @@ footer h4{font-family:var(--f-display);color:var(--snow);font-size:.78rem;letter
 footer ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
 footer a{text-decoration:none;transition:color .15s}
 footer a:hover{color:var(--lamp)}
+.foot__icons{display:flex;gap:10px}
+.foot__icon{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line-night);color:var(--snow);transition:color .15s,border-color .15s,background .15s}
+.foot__icon svg{width:21px;height:21px}
+.foot__icon:hover{color:var(--lamp);border-color:var(--lamp);background:rgba(201,162,39,.08)}
 .foot__brand{display:flex;align-items:center;gap:10px;color:var(--snow);font-family:var(--f-festive);
   font-weight:400;font-size:1.75rem;line-height:1;margin-bottom:14px}
 .foot__elf{width:auto;height:92px;flex:none;margin-top:-30px;filter:drop-shadow(0 6px 10px rgba(0,0,0,.35))}
@@ -953,8 +957,10 @@ footer a:hover{color:var(--lamp)}
         <li><a href="#" data-legal="prywatnosc">Polityka prywatności</a></li>
       </ul></div>
       <div><h4>Kontakt</h4><ul>
-        <li><a href="mailto:kontakt@akelements.pl">kontakt@akelements.pl</a></li>
-        <li><a href="https://www.instagram.com/elfpsotnik/" target="_blank" rel="noopener">Instagram @elfpsotnik</a></li>
+        <li class="foot__icons">
+          <a class="foot__icon" href="mailto:kontakt@akelements.pl" aria-label="Napisz do nas: kontakt@akelements.pl" title="kontakt@akelements.pl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+          <a class="foot__icon" href="https://www.instagram.com/elfpsotnik/" target="_blank" rel="noopener" aria-label="Instagram @elfpsotnik" title="Instagram @elfpsotnik"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        </li>
         <li><a href="mailto:kontakt@akelements.pl?subject=Wsp%C3%B3%C5%82praca">Współpraca</a></li>
       </ul></div>
     </div>
