@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://michal113.github.io/elfpsotnik-demo/sitemap.xml
