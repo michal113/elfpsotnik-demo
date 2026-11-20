@@ -1231,6 +1231,14 @@ footer{padding-bottom:110px}
 @media (max-width:420px){.brand__logo{height:44px}}
 @media (max-width:480px){.bot-btn img{width:58px;margin-top:-4px}}
 
+/* ---------- HERO wariant B: delikatny sznur ciepłych światełek ---------- */
+.lights path{stroke:rgba(232,206,134,.32);stroke-width:1}
+.bulb{width:5px;height:5px;margin-left:-2.5px;border-radius:50%;transform:none;background:#fff4d6;
+  box-shadow:0 0 6px 1px rgba(255,226,160,.75),0 0 16px 4px rgba(255,214,140,.18)}
+.bulb::before{display:none}
+@media (prefers-reduced-motion:no-preference){.bulb{animation:glim var(--d) ease-in-out infinite;animation-delay:var(--dl)}}
+@keyframes glim{0%,100%{opacity:1}50%{opacity:.55}}
+
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -2444,18 +2452,19 @@ function tickCountdown(){
 tickCountdown(); setInterval(tickCountdown, 30000);
 
 /* ---------------- string lights ---------------- */
-const LIGHT_COLORS = ['#D9412F','#E8B93A','#4FAF73','#7FB6D0','#F0873A'];
+const LIGHT_COLORS = ['#FFE7B3'];
 function buildLights(){
   const el = $('#lights'); if(!el) return;
   const w = el.clientWidth || innerWidth;
-  const n = Math.max(7, Math.round(w/70));
-  const seg = w/n, sag = 16;
+  const n = Math.max(7, Math.round(w/120));
+  const seg = w/n, sag = 11;
   let d = 'M0 4', bulbs = '';
   for(let i=0;i<n;i++){
     const cx = i*seg + seg/2, x1 = (i+1)*seg;
     d += ` Q${cx.toFixed(1)} ${4+sag*2} ${x1.toFixed(1)} 4`;
     const c = LIGHT_COLORS[i%LIGHT_COLORS.length];
-    bulbs += `<i class="bulb" style="left:${cx.toFixed(1)}px;top:${4+sag}px;--c:${c};--r:${i%2?7:-7}deg;--d:${(2.2+Math.random()*2.2).toFixed(2)}s;--dl:${(-Math.random()*3).toFixed(2)}s"></i>`;
+    for(const t of [.2,.4,.6,.8]){ const bx = i*seg + seg*t, by = 4 + sag*2*2*t*(1-t);
+      bulbs += `<i class="bulb" style="left:${bx.toFixed(1)}px;top:${(by-2.5).toFixed(1)}px;--c:${c};--d:${(2.2+Math.random()*2.2).toFixed(2)}s;--dl:${(-Math.random()*3).toFixed(2)}s"></i>`; }
   }
   el.innerHTML = `<svg viewBox="0 0 ${w} 46" preserveAspectRatio="none"><path d="${d}"/></svg>${bulbs}`;
 }
