@@ -1275,7 +1275,7 @@ footer{padding-bottom:110px}
 .hero .btn--primary{position:relative;overflow:hidden}
 .hero .btn--primary::after{content:"";position:absolute;inset:0;transform:translateX(-130%);pointer-events:none;
   background:linear-gradient(105deg,transparent 36%,rgba(255,255,255,.34) 50%,transparent 64%)}
-.cd-unit b{display:block}
+.cd-unit b{display:block;font-variant-numeric:tabular-nums;min-width:2ch}
 @media (prefers-reduced-motion:no-preference){
   .hero h1 .w{animation:wordIn .85s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(.15s + var(--i) * .085s)}
   .h1-swoosh{animation:draw .9s cubic-bezier(.6,0,.3,1) 1.05s both}
@@ -1283,10 +1283,6 @@ footer{padding-bottom:110px}
   .hero__copy > .lead{animation:rise .8s cubic-bezier(.2,.8,.2,1) both .8s}
   .hero__copy > .hero__cta{animation:rise .8s cubic-bezier(.2,.8,.2,1) both .95s}
   .hero__copy > .countdown{animation:rise .8s cubic-bezier(.2,.8,.2,1) both 1.1s}
-  .hero .cd-unit{animation:pop .6s cubic-bezier(.3,1.6,.5,1) both}
-  .hero .cd-unit:nth-of-type(1){animation-delay:1.2s}.hero .cd-unit:nth-of-type(2){animation-delay:1.28s}
-  .hero .cd-unit:nth-of-type(3){animation-delay:1.36s}.hero .cd-unit:nth-of-type(4){animation-delay:1.44s}
-  .cd-unit b.tick{animation:tick .45s cubic-bezier(.2,.9,.3,1)}
   .hero .btn--primary::after{animation:sheen 5.5s ease-in-out 2.2s infinite}
   .hero .scene__duo{animation:elvesIn 1.2s cubic-bezier(.25,1.1,.4,1) .3s both,elvesFloat 6.5s ease-in-out 1.6s infinite}
   .hero .scene__glow{animation:glowPulse 5s ease-in-out infinite}
@@ -1294,8 +1290,6 @@ footer{padding-bottom:110px}
 @keyframes wordIn{from{opacity:0;transform:translateY(.5em) rotate(5deg);filter:blur(7px)}to{opacity:1;transform:none;filter:none}}
 @keyframes draw{from{clip-path:inset(-100% 100% -100% 0)}to{clip-path:inset(-100% 0 -100% 0)}}
 @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
-@keyframes pop{from{opacity:0;transform:scale(.6) translateY(10px)}to{opacity:1;transform:none}}
-@keyframes tick{from{opacity:0;transform:translateY(-45%)}to{opacity:1;transform:none}}
 @keyframes sheen{0%{transform:translateX(-130%)}16%,100%{transform:translateX(130%)}}
 @keyframes elvesIn{0%{opacity:0;transform:translateY(-70px) rotate(-6deg) scale(.94)}55%{opacity:1;transform:translateY(10px) rotate(1.6deg)}78%{transform:translateY(-3px) rotate(-.5deg)}100%{opacity:1;transform:none}}
 @keyframes elvesFloat{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-10px) rotate(.7deg)}}
@@ -2523,7 +2517,7 @@ function tickCountdown(){
   for(const k in vals){
     const el = $('#cd-'+k); if(!el) continue;
     const txt = k==='d' ? String(vals[k]) : String(vals[k]).padStart(2,'0');
-    if(el.textContent !== txt){ el.textContent = txt; el.classList.remove('tick'); void el.offsetWidth; el.classList.add('tick'); }
+    if(el.textContent !== txt) el.textContent = txt;
   }
 }
 tickCountdown(); setInterval(tickCountdown, 1000);
