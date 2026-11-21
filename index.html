@@ -1231,6 +1231,79 @@ footer{padding-bottom:110px}
 @media (max-width:420px){.brand__logo{height:44px}}
 @media (max-width:480px){.bot-btn img{width:58px;margin-top:-4px}}
 
+
+/* ---------- HERO: wiszące ozdoby + animacje ---------- */
+.hero{padding-top:clamp(104px,8.5vw,128px);
+  background:radial-gradient(70% 80% at 72% 46%,#1c4838 0%,var(--night) 58%,#0c2119 100%)}
+.lights{height:0;z-index:3}
+.orn{position:absolute;top:0;width:0;pointer-events:none}
+.orn__in{position:absolute;left:0;top:0;width:max-content;transform:translateX(-50%);transform-origin:50% 0}
+.orn__hit{display:flex;flex-direction:column;align-items:center;transform-origin:50% 0}
+.orn__str{width:1px;height:var(--len);background:linear-gradient(rgba(232,206,134,.2),rgba(232,206,134,.8))}
+.lights path.fl{fill:none;stroke:#fff;stroke-width:3;stroke-linecap:round;opacity:.92}
+.lights svg.orn__obj{position:static;width:auto;height:auto;overflow:visible}
+.orn__obj{display:block;max-width:none;flex:none;margin-top:-2px;pointer-events:auto;filter:drop-shadow(0 6px 8px rgba(0,0,0,.35))}
+@media (prefers-reduced-motion:no-preference){
+  .orn{animation:ornDrop 1s cubic-bezier(.3,1.45,.5,1) both;animation-delay:calc(var(--i) * 55ms + .1s)}
+  .lights.is-rebuilt .orn{animation:none}
+  .orn__in{animation:ornSway var(--dur) ease-in-out infinite alternate;animation-delay:var(--dl)}
+  .orn__hit.is-hit{animation:ornHit 1.4s cubic-bezier(.3,.7,.3,1)}
+}
+@keyframes ornDrop{from{transform:translateY(-300px)}to{transform:none}}
+@keyframes ornSway{from{transform:translateX(-50%) rotate(calc(var(--sw) * -1))}to{transform:translateX(-50%) rotate(var(--sw))}}
+@keyframes ornHit{0%{transform:rotate(0)}18%{transform:rotate(15deg)}40%{transform:rotate(-10deg)}62%{transform:rotate(6deg)}82%{transform:rotate(-3deg)}100%{transform:rotate(0)}}
+
+/* iskierki i spadająca gwiazda */
+.hero__sparks{position:absolute;inset:0;z-index:1;pointer-events:none}
+.spark{position:absolute;width:var(--s);height:var(--s);background:#ffe9b0;opacity:.7;transform:scale(.8);
+  clip-path:polygon(50% 0,59% 41%,100% 50%,59% 59%,50% 100%,41% 59%,0 50%,41% 41%)}
+.hero__shoot{position:absolute;left:0;top:9%;width:150px;height:2px;border-radius:2px;opacity:0;
+  background:linear-gradient(90deg,transparent,rgba(255,240,200,.9));transform:rotate(15deg)}
+.hero__shoot::after{content:"";position:absolute;right:-2px;top:-2px;width:6px;height:6px;border-radius:50%;background:#fff6dc;box-shadow:0 0 10px 3px rgba(255,236,180,.7)}
+@media (prefers-reduced-motion:no-preference){
+  .spark{animation:spark 3.8s ease-in-out infinite;animation-delay:var(--dl)}
+  .hero__shoot{animation:shoot 13s linear 3.5s infinite}
+}
+@keyframes spark{0%,100%{transform:scale(0) rotate(0);opacity:0}45%,55%{transform:scale(1) rotate(45deg);opacity:.95}}
+@keyframes shoot{0%{transform:translate(-20vw,0) rotate(15deg);opacity:0}1.5%{opacity:1}8%{transform:translate(75vw,25vw) rotate(15deg);opacity:0}100%{transform:translate(75vw,25vw) rotate(15deg);opacity:0}}
+
+/* nagłówek: słowo po słowie + odręczne podkreślenie */
+.hero h1 .w{display:inline-block}
+.hero h1 em{display:inline-block;position:relative}
+.h1-swoosh{position:absolute;left:1%;bottom:-.24em;width:98%;height:.2em;overflow:visible}
+.h1-swoosh path{fill:none;stroke:var(--lamp-soft);stroke-width:3;stroke-linecap:round;vector-effect:non-scaling-stroke}
+.hero .btn--primary{position:relative;overflow:hidden}
+.hero .btn--primary::after{content:"";position:absolute;inset:0;transform:translateX(-130%);pointer-events:none;
+  background:linear-gradient(105deg,transparent 36%,rgba(255,255,255,.34) 50%,transparent 64%)}
+.cd-unit b{display:block;font-variant-numeric:tabular-nums;min-width:2ch}
+@media (prefers-reduced-motion:no-preference){
+  .hero h1 .w{animation:wordIn .85s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(.15s + var(--i) * .085s)}
+  .h1-swoosh{animation:draw .9s cubic-bezier(.6,0,.3,1) 1.05s both}
+  .hero__copy > .eyebrow{animation:rise .7s ease both .05s}
+  .hero__copy > .lead{animation:rise .8s cubic-bezier(.2,.8,.2,1) both .8s}
+  .hero__copy > .hero__cta{animation:rise .8s cubic-bezier(.2,.8,.2,1) both .95s}
+  .hero__copy > .countdown{animation:rise .8s cubic-bezier(.2,.8,.2,1) both 1.1s}
+  .hero .btn--primary::after{animation:sheen 5.5s ease-in-out 2.2s infinite}
+  .hero .scene__duo{animation:elvesIn 1.2s cubic-bezier(.25,1.1,.4,1) .3s both,elvesFloat 6.5s ease-in-out 1.6s infinite}
+  .hero .scene__glow{animation:glowPulse 5s ease-in-out infinite}
+}
+@keyframes wordIn{from{opacity:0;transform:translateY(.5em) rotate(5deg);filter:blur(7px)}to{opacity:1;transform:none;filter:none}}
+@keyframes draw{from{clip-path:inset(-100% 100% -100% 0)}to{clip-path:inset(-100% 0 -100% 0)}}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes sheen{0%{transform:translateX(-130%)}16%,100%{transform:translateX(130%)}}
+@keyframes elvesIn{0%{opacity:0;transform:translateY(-70px) rotate(-6deg) scale(.94)}55%{opacity:1;transform:translateY(10px) rotate(1.6deg)}78%{transform:translateY(-3px) rotate(-.5deg)}100%{opacity:1;transform:none}}
+@keyframes elvesFloat{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-10px) rotate(.7deg)}}
+@keyframes glowPulse{0%,100%{opacity:.8}50%{opacity:1}}
+@supports (animation-timeline:scroll()){
+  @media (prefers-reduced-motion:no-preference) and (min-width:881px){
+    .hero .scene{animation:sceneDrift linear both;animation-timeline:scroll(root);animation-range:0 720px}
+    .hero .hero__copy{animation:copyDrift linear both;animation-timeline:scroll(root);animation-range:0 720px}
+  }
+}
+@keyframes sceneDrift{to{transform:translateY(70px)}}
+@keyframes copyDrift{to{transform:translateY(26px)}}
+@media (max-width:880px){.hero{padding-top:96px}.hero__shoot{width:90px}}
+
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -1381,10 +1454,11 @@ footer{padding-bottom:110px}
 
   <section class="night hero">
     <div class="lights" id="lights" aria-hidden="true"></div>
+    <div class="hero__sparks" aria-hidden="true"><i class="spark" style="left:57%;top:20%;--s:14px;--dl:0s"></i><i class="spark" style="left:94%;top:30%;--s:18px;--dl:1.3s"></i><i class="spark" style="left:89%;top:72%;--s:12px;--dl:2.1s"></i><i class="spark" style="left:54%;top:66%;--s:16px;--dl:0.7s"></i><i class="spark" style="left:73%;top:11%;--s:10px;--dl:2.8s"></i><i class="spark" style="left:5%;top:42%;--s:14px;--dl:1.8s"></i><i class="spark" style="left:3%;top:74%;--s:10px;--dl:0.4s"></i><i class="spark" style="left:45%;top:16%;--s:9px;--dl:3.2s"></i><i class="spark" style="left:97%;top:54%;--s:11px;--dl:2.5s"></i><i class="hero__shoot"></i></div>
     <div class="wrap hero__grid">
       <div class="hero__copy">
         <p class="eyebrow eyebrow--night">1–24 grudnia • sezon 2026</p>
-        <h1>W tym grudniu ktoś zamieszka <em>na Waszej półce</em></h1>
+        <h1><span class="w" style="--i:0">W</span> <span class="w" style="--i:1">tym</span> <span class="w" style="--i:2">grudniu</span> <span class="w" style="--i:3">ktoś</span> <span class="w" style="--i:4">zamieszka</span> <em><span class="w" style="--i:5">na</span> <span class="w" style="--i:6">Waszej</span> <span class="w" style="--i:7">półce</span><svg class="h1-swoosh" viewBox="0 0 300 14" preserveAspectRatio="none" aria-hidden="true"><path d="M3 9C50 3 96 12 150 7s100-3 147 1" pathLength="1"/></svg></em></h1>
         <p class="lead">Elf przylatuje 1 grudnia i zostaje do Wigilii. Co noc znika w nowym miejscu, a rano dzieci ruszają na poszukiwania. Wy przygotowujecie psotę, on zbiera całą chwałę.</p>
         <div class="hero__cta">
           <button class="btn btn--primary btn--lg" data-go="shop">Wybierz swojego elfa</button>
@@ -1395,6 +1469,7 @@ footer{padding-bottom:110px}
           <div class="cd-unit"><b id="cd-d">0</b><span>dni</span></div>
           <div class="cd-unit"><b id="cd-h">0</b><span>godz.</span></div>
           <div class="cd-unit"><b id="cd-m">0</b><span>min.</span></div>
+          <div class="cd-unit"><b id="cd-s">0</b><span>sek.</span></div>
         </div>
       </div>
       <div class="scene" id="scene">
@@ -2437,30 +2512,68 @@ function nextDec1(){
   return d;
 }
 function tickCountdown(){
-  const diff = nextDec1() - new Date();
-  const d = Math.floor(diff/86400000), h = Math.floor(diff/3600000)%24, m = Math.floor(diff/60000)%60;
-  $('#cd-d').textContent = d; $('#cd-h').textContent = String(h).padStart(2,'0'); $('#cd-m').textContent = String(m).padStart(2,'0');
+  const diff = Math.max(0, nextDec1() - new Date());
+  const vals = {d: Math.floor(diff/86400000), h: Math.floor(diff/3600000)%24, m: Math.floor(diff/60000)%60, s: Math.floor(diff/1000)%60};
+  for(const k in vals){
+    const el = $('#cd-'+k); if(!el) continue;
+    const txt = k==='d' ? String(vals[k]) : String(vals[k]).padStart(2,'0');
+    if(el.textContent !== txt) el.textContent = txt;
+  }
 }
-tickCountdown(); setInterval(tickCountdown, 30000);
+tickCountdown(); setInterval(tickCountdown, 1000);
 
-/* ---------------- string lights ---------------- */
-const LIGHT_COLORS = ['#D9412F','#E8B93A','#4FAF73','#7FB6D0','#F0873A'];
+/* ---------------- wiszące ozdoby ---------------- */
+const ORN = {
+  defs: `<svg width="0" height="0" style="position:absolute"><defs>
+    <radialGradient id="og-red" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#F0685C"/><stop offset=".5" stop-color="#B3232C"/><stop offset="1" stop-color="#6E0F18"/></radialGradient>
+    <radialGradient id="og-gold" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#FFF0BF"/><stop offset=".5" stop-color="#D9AE3C"/><stop offset="1" stop-color="#93701A"/></radialGradient>
+    <radialGradient id="og-cream" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".55" stop-color="#F1E7D3"/><stop offset="1" stop-color="#C9BA9C"/></radialGradient>
+    <linearGradient id="og-star" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFEFB8"/><stop offset="1" stop-color="#C9962A"/></linearGradient>
+  </defs></svg>`,
+  ball(fill, s){ return `<svg class="orn__obj" width="${s}" height="${(s*1.25).toFixed(0)}" viewBox="0 0 40 50"><rect x="15.5" y="1" width="9" height="8" rx="2" fill="#D9AE3C"/><rect x="15.5" y="6" width="9" height="2" fill="#93701A" opacity=".5"/><circle cx="20" cy="29" r="18" fill="url(#${fill})"/><path d="M3 25q17 7 34 0" fill="none" stroke="rgba(255,255,255,.22)" stroke-width="1.6"/><ellipse cx="13.5" cy="21" rx="3.8" ry="6" fill="#fff" opacity=".5" transform="rotate(-30 13.5 21)"/></svg>`; },
+  star(s){
+    let p = ''; for(let i=0;i<10;i++){ const a = -Math.PI/2 + i*Math.PI/5, r = i%2 ? 8.4 : 19; p += (20+Math.cos(a)*r).toFixed(1)+','+(22+Math.sin(a)*r).toFixed(1)+' '; }
+    return `<svg class="orn__obj" width="${s}" height="${s}" viewBox="0 0 40 42"><polygon points="${p}" fill="url(#og-star)" stroke="#FFF3CC" stroke-width=".8" stroke-linejoin="round"/><polygon points="20,3 22.6,16 20,22 17.4,16" fill="#fff" opacity=".35"/></svg>`;
+  },
+  flake(s){
+    let d = ''; for(let i=0;i<6;i++){ const a = i*Math.PI/3;
+      const P = (r, off=0) => (20+Math.cos(a+off)*r).toFixed(1)+' '+(20+Math.sin(a+off)*r).toFixed(1);
+      d += `M20 20L${P(17)}M${P(11)}L${P(16,.34)}M${P(11)}L${P(16,-.34)}`; }
+    return `<svg class="orn__obj" width="${s}" height="${s}" viewBox="0 0 40 40"><path class="fl" d="${d}"/></svg>`;
+  }
+};
+let lightsW = 0;
 function buildLights(){
   const el = $('#lights'); if(!el) return;
   const w = el.clientWidth || innerWidth;
-  const n = Math.max(7, Math.round(w/70));
-  const seg = w/n, sag = 16;
-  let d = 'M0 4', bulbs = '';
+  if(w === lightsW) return;
+  const rebuilt = lightsW !== 0; lightsW = w;
+  let seed = 11; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  const mobile = w < 700;
+  const wrapL = Math.max(0, (w - 1180) / 2), wrapR = w - wrapL;
+  const n = Math.round(w / (mobile ? 52 : 82));
+  const kinds = ['red','star','gold','flake','red','cream','star','gold','flake'];
+  let html = ORN.defs;
   for(let i=0;i<n;i++){
-    const cx = i*seg + seg/2, x1 = (i+1)*seg;
-    d += ` Q${cx.toFixed(1)} ${4+sag*2} ${x1.toFixed(1)} 4`;
-    const c = LIGHT_COLORS[i%LIGHT_COLORS.length];
-    bulbs += `<i class="bulb" style="left:${cx.toFixed(1)}px;top:${4+sag}px;--c:${c};--r:${i%2?7:-7}deg;--d:${(2.2+Math.random()*2.2).toFixed(2)}s;--dl:${(-Math.random()*3).toFixed(2)}s"></i>`;
+    const x = (i + .5) / n * w + (rnd() - .5) * 20;
+    const out = x < wrapL ? wrapL - x : x > wrapR ? x - wrapR : 0;
+    const far = Math.min(1, out / 240);
+    const len = out ? 40 + far * 150 * (.55 + rnd() * .45) + rnd() * 20 : (mobile ? 10 : 16) + rnd() * (mobile ? 26 : 38);
+    const k = kinds[(i * 4 + (i % 3)) % kinds.length];
+    const s = Math.round((mobile ? 18 : 24) + rnd() * 8 + far * 12);
+    const obj = k === 'star' ? ORN.star(s + 4) : k === 'flake' ? ORN.flake(s + 7) : ORN.ball('og-' + k, s);
+    html += `<span class="orn" style="left:${x.toFixed(1)}px;--i:${i};--len:${len.toFixed(0)}px;--sw:${((1.4 + rnd() * 2.2) * (1 - far * .6)).toFixed(1)}deg;--dur:${(2.6 + rnd() * 2.2).toFixed(2)}s;--dl:${(-rnd() * 4).toFixed(2)}s"><span class="orn__in"><span class="orn__hit"><i class="orn__str"></i>${obj}</span></span></span>`;
   }
-  el.innerHTML = `<svg viewBox="0 0 ${w} 46" preserveAspectRatio="none"><path d="${d}"/></svg>${bulbs}`;
+  el.classList.toggle('is-rebuilt', rebuilt);
+  el.innerHTML = html;
 }
 buildLights();
 addEventListener('resize', buildLights);
+$('#lights').addEventListener('pointerover', e=>{
+  const o = e.target.closest('.orn__obj'); if(!o) return;
+  const hit = o.parentElement; if(hit.classList.contains('is-hit')) return;
+  hit.classList.add('is-hit'); hit.addEventListener('animationend', ()=>hit.classList.remove('is-hit'), {once:true});
+});
 
 /* ---------------- snow ---------------- */
 const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
