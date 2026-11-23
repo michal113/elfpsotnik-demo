@@ -2314,8 +2314,13 @@ function openDrawer(open){
   $('#drawer').dataset.open = String(open);
   $('#drawer').setAttribute('aria-hidden', String(!open));
   const s = $('#scrim');
-  if(open){ s.hidden=false; requestAnimationFrame(()=>s.dataset.open='true'); }
-  else { s.dataset.open='false'; setTimeout(()=>{s.hidden=true;},250); }
+  if(open){
+    s.hidden=false; requestAnimationFrame(()=>s.dataset.open='true');
+    if(bot.open){ bot.reopenAfterCart = true; botClose(); }
+  } else {
+    s.dataset.open='false'; setTimeout(()=>{s.hidden=true;},250);
+    if(bot.reopenAfterCart){ bot.reopenAfterCart = false; botOpen(); }
+  }
 }
 
 /* ---------------- modal + toast ---------------- */
@@ -2517,7 +2522,7 @@ if(!reduce && 'IntersectionObserver' in window){
 }
 
 /* ---------------- chatbot ---------------- */
-const bot = {open:false, el:null, lastPrank:-1, awaiting:null};
+const bot = {open:false, el:null, lastPrank:-1, awaiting:null, reopenAfterCart:false};
 const QUICK = [
   {id:'psota', label:'Podpowiedz psotę na dziś', gold:true},
   {id:'imie',  label:'Jak nadać imię elfowi?'},
