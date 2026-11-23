@@ -2808,17 +2808,37 @@ function onBotClick(e){
     toast('Otwieram produkt');
   }
 }
-function onBotSubmit(e){
+const BOT_API = 'https://elf-psotnik-bot.sergiuszserafin26.workers.dev';
+async function onBotSubmit(e){
   e.preventDefault();
   const inp = $('#botInput');
   const v = inp.value.trim();
   if(!v) return;
   say('me', esc(v));
   inp.value='';
-  typing(800, ()=>{
-    say('bot','Na razie odpowiadam na pytania z przycisków poniżej. Z innymi sprawami napisz do nas: kontakt@akelements.pl, odpiszemy szybko.');
-    renderQuick(QUICK);
-  });
+  $('#botQuick').innerHTML = '';
+  const t = document.createElement('div');
+  t.className='typing'; t.innerHTML='<i></i><i></i><i></i>';
+  logEl().appendChild(t); scrollLog();
+  bot.history = bot.history || [];
+  try{
+    const res = await fetch(BOT_API, {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ message: v, history: bot.history })
+    });
+    if(!res.ok) throw new Error('bad status');
+    const data = await res.json();
+    t.remove();
+    const reply = data.reply || 'Hmm, zgubiłem czapkę z pomysłami. Spróbuj jeszcze raz!';
+    say('bot', esc(reply));
+    bot.history.push({role:'user', content: v}, {role:'assistant', content: reply});
+    if(bot.history.length > 20) bot.history = bot.history.slice(-20);
+  }catch(err){
+    t.remove();
+    say('bot','Coś mi zamarzło w czapce i nie mogę teraz odpowiedzieć. Spróbuj za chwilę albo napisz do nas: kontakt@akelements.pl.');
+  }
+  renderQuick(QUICK);
 }
 setTimeout(()=>{ if(!bot.open) $('#botTeaser').hidden = false;
   setTimeout(()=>{ const t=$('#botTeaser'); if(t) t.hidden = true; }, 10000);
