@@ -2341,36 +2341,20 @@ async function shopifyLoadVariants(){
 }
 shopifyLoadVariants();
 
-let shopifyCartId = null;
-try{ shopifyCartId = localStorage.getItem('elf-shopify-cart-id'); }catch(e){}
-
-async function shopifyEnsureCart(){
-  if(shopifyCartId){
-    const data = await shopifyFetch(`query($id:ID!){ cart(id:$id){ id checkoutUrl } }`, {id: shopifyCartId});
-    if(data && data.cart) return data.cart;
-    shopifyCartId = null;
-  }
-  const data = await shopifyFetch(`mutation{ cartCreate{ cart{ id checkoutUrl } userErrors{ message } } }`);
-  const c = data && data.cartCreate && data.cartCreate.cart;
-  if(c){ shopifyCartId = c.id; try{ localStorage.setItem('elf-shopify-cart-id', shopifyCartId); }catch(e){} }
-  return c;
-}
-
-// próbuje zbudować prawdziwy koszyk Shopify z tego co jest w koszyku demo;
-// zwraca checkoutUrl jeśli chociaż jeden produkt istnieje realnie w Shopify, inaczej null
+// buduje swiezy koszyk Shopify za kazdym razem z dokladnie tego co jest w koszyku demo (bez doklejania do starego,
+// zeby klikniecie "checkout" kilka razy z rzedu nie podwajalo ilosci produktow);
+// zwraca checkoutUrl jesli chociaz jeden produkt istnieje realnie w Shopify, inaczej null
 async function shopifyBuildCheckoutUrl(){
   if(!SHOPIFY_ENABLED) return null;
   const lines = cart
     .map(r => ({ merchandiseId: SHOPIFY_VARIANTS[r.id], quantity: r.qty }))
     .filter(l => l.merchandiseId);
   if(!lines.length) return null;
-  const c = await shopifyEnsureCart();
-  if(!c) return null;
   const data = await shopifyFetch(
-    `mutation($cartId:ID!,$lines:[CartLineInput!]!){ cartLinesAdd(cartId:$cartId, lines:$lines){ cart{ checkoutUrl } userErrors{ message } } }`,
-    { cartId: c.id, lines }
+    `mutation($lines:[CartLineInput!]!){ cartCreate(input:{lines:$lines}){ cart{ checkoutUrl } userErrors{ message } } }`,
+    { lines }
   );
-  const res = data && data.cartLinesAdd;
+  const res = data && data.cartCreate;
   if(res && res.userErrors && res.userErrors.length) console.error('Shopify cart errors:', res.userErrors);
   const url = res && res.cart ? res.cart.checkoutUrl : null;
   return url ? forcePolishLocale(url) : null;
