@@ -2832,7 +2832,7 @@ setTimeout(()=>{ if(!bot.open) $('#botTeaser').hidden = false;
 (function(){
   let triggered = false;
   function maybeAutoOpenBot(){
-    if(triggered || bot.open) return;
+    if(triggered || bot.open || current!=='home') return;
     const threshold = Math.min(500, window.innerHeight * 0.5);
     if(window.scrollY > threshold){
       triggered = true;
